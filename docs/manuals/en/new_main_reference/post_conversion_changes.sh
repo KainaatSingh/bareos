@@ -186,6 +186,8 @@ ${PERL} 's#\$=\$#≤#g'   ${DESTFILE}
 ${PERL} 's#:raw-latex:`\\user\{(.*)\}`#**\1**#g'   ${DESTFILE}
 ${PERL} 's#\\user\{(.*)\}#**\1**#g'   ${DESTFILE}
 
+# \idir
+${PERL} 's#\\idir *(.*)#//home/kainaat.singh/git/bareos/docs/manuals/en/main/images/conv/\1.svg#g'  ${DESTFILE}
 
 
 # remove xml stuff
