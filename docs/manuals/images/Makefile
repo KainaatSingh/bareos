@@ -5,7 +5,7 @@ MKDIRCONV=mkdir -p conv/
 ORIG_EPS = $(wildcard *.eps)
 CONV_EPS = $(patsubst %.eps,conv/%.eps,$(ORIG_EPS))
 ORIG_PNG = $(wildcard *.png)
-CONV_PNG = $(patsubst %.png,conv/%.svg,$(ORIG_PNG))
+CONV_PNG = $(patsubst %.eps,conv/%.png,$(ORIG_EPS))
 COPY_PNG = $(patsubst %.png,conv/%.png,$(ORIG_PNG))
 ORIG_DOT = $(wildcard *.dot)
 COPY_DOT = $(patsubst %.dot,conv/%.dot,$(ORIG_DOT))
@@ -81,10 +81,6 @@ conv/univention-configuration-registry-settings.png: univention-configuration-re
 conv/univention-ucs-overview-administration.png: univention-ucs-overview-administration.png
 	@$(MKDIRCONV)
 	$(COPY) univention-ucs-overview-administration.png conv/
-
-conv/passive-client-communication.svg: passive-client-communication.png
-	@$(MKDIRCONV)
-	$(CONVERT) passive-client-communication.png conv/passive-client-communication.svg
 
 
 #conv/%.png: %.png
