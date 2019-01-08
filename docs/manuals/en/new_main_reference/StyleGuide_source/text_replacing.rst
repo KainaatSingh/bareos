@@ -196,6 +196,19 @@ The output should look like this:
 Bareos Webui
 
 
+Yes|No
+------
+
+If you want to display yes|no text, the following formatting should be used:
+
+.. code-block:: sh
+
+   yes|no
+
+The output should look like this:
+
+yes|no
+
 Bareos Paths and Filenames
 --------------------------
 
@@ -248,9 +261,7 @@ NDMP Text
 +----------------------------------------+-------------------------------------------+
 | Robot Agent          			 | ``|Robot Agent|``                         |
 +----------------------------------------+-------------------------------------------+
-| yes|no                                 | ``yes\\|no``                              |
+| NDMP_BAREOS                            | ``NDMP\_BAREOS``                          |
 +----------------------------------------+-------------------------------------------+
-| NDMP_BAREOS                            | ``NDMP\_BAREOS``                           |
-+----------------------------------------+-------------------------------------------+
-| NDMP_NATIVE                            | ``NDMP\_NATIVE``                           |
+| NDMP_NATIVE                            | ``NDMP\_NATIVE``                          |
 +----------------------------------------+-------------------------------------------+

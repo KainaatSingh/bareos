@@ -60,11 +60,11 @@ If you want to quote a certain text, the following formatting should be used:
 
 .. code-block:: sh
 
-   ``Application Managed``
+   ''Application Managed''
 
 The output should look like this:
 
-``Application Managed``
+''Application Managed''
 
 
 Warning
@@ -80,11 +80,15 @@ If you want to display a warning, the following formatting should be used:
 
 .. code-block:: sh
    
-   \n.. warning:: \n This record ignores retention periods!
+   .. warning:: 
+
+   This record ignores retention periods!
 
 The output should look like this:
 
-\n.. warning:: \n This record ignores retention periods!
+.. warning::
+
+   This record ignores retention periods!
 
 
 Bareos Config Input
@@ -109,11 +113,11 @@ If you want to display the contents of a config file and it is present in some o
 
 .. code-block:: sh
    
-   .. literalinclude:: ../../main/bareos-sd.conf
+   .. literalinclude:: ../../main/config/SdDeviceDeviceOptionsRados1.conf
 
 The output should look like this:
 
-.. literalinclude:: ../../main/bareos-sd.conf
+.. literalinclude:: ../../main/config/SdDeviceDeviceOptionsRados1.conf
 
 
 Bconsole session
@@ -125,7 +129,16 @@ If you want to display a complete bareos console session, then it needs to be pu
 
 .. code-block:: sh
 
-   .. code-block:: sh\n    :caption: bconsole\n
+   .. code-block:: sh
+    :caption: list volumes
+    *list volumes
+
+The output should look like this:
+
+.. code-block:: sh
+   :caption: list volumes
+   
+   *list volumes
 
 
 Bareos Configuration
@@ -137,7 +150,33 @@ If you want to display bareos configuration that is part of configuration file, 
 
 .. code-block:: sh
 
-   .. code-block:: sh\n    :caption: bconfig\n
+   .. code-block:: sh
+    :caption: Pool Ressource: setting Maximum Block Size
+
+    Pool {
+       Name = LTO-4-1M
+       Pool Type = Backup
+       Recycle = yes                       # Bareos can automatically recycle Volumes
+       AutoPrune = yes                     # Prune expired volumes
+       Volume Retention = 1 Month          # How long should the Full Backups be kept? (#06)
+       Maximum Block Size = 1048576
+       Recycle Pool = Scratch
+    }
+
+The output should look like this:
+
+.. code-block:: sh
+    :caption: Pool Ressource: setting Maximum Block Size
+
+    Pool {
+       Name = LTO-4-1M
+       Pool Type = Backup
+       Recycle = yes                       # Bareos can automatically recycle Volumes
+       AutoPrune = yes                     # Prune expired volumes
+       Volume Retention = 1 Month          # How long should the Full Backups be kept? (#06)
+       Maximum Block Size = 1048576
+       Recycle Pool = Scratch
+    }
 
 
 Bareos Configuration Resource
@@ -150,11 +189,31 @@ If you want to display a baeros specific resource configuration file, then it ne
 
 .. code-block:: sh
 
-   .. code-block:: sh\n    :caption: Dir Job Backup
+   .. code-block:: sh
+    :caption: bareos-dir job example
 
-* First parameter:  Daemon name
-* Second parameter: Resource Type
-* Third parameter:  Resource name
+    Job {
+        ...
+        Accurate = yes
+        Always Incremental = yes
+        Always Incremental Job Retention = <timespec>
+        Always Incremental Keep Number = <number>
+        ...
+    }
+
+The output should look like this:
+
+   .. code-block:: sh
+    :caption: bareos-dir job example
+
+    Job {
+        ...
+        Accurate = yes
+        Always Incremental = yes
+        Always Incremental Job Retention = <timespec>
+        Always Incremental Keep Number = <number>
+        ...
+    }
 
 
 Configuration File
@@ -166,7 +225,23 @@ If you want to display a general configuration file(not related to bareos), then
 
 .. code-block:: sh
 
-   .. code-block:: sh\n    :caption: config\n
+   .. code-block:: sh
+    :caption: /etc/my.cnf.d/server.cnf
+
+    ...
+    [mysqld]
+    innodb_lock_wait_timeout = 300
+    ...
+
+The output should look like this:
+
+.. code-block:: sh
+    :caption: /etc/my.cnf.d/server.cnf
+
+    ...
+    [mysqld]
+    innodb_lock_wait_timeout = 300
+    ...
 
 
 Unix Commands
@@ -178,7 +253,19 @@ If you want to display a unix command, then it needs to be put in a code block.
 
 .. code-block:: sh
 
-   .. code-block:: sh\n    :caption: commands\n
+   .. code-block:: sh
+    :caption: Access the local PostgreSQL database
+
+    su - postgres
+    psql
+
+The output should look like this:
+
+.. code-block:: sh
+    :caption: Access the local PostgreSQL database
+
+    su - postgres
+    psql
 
 
 Unix Command Prompt
@@ -190,8 +277,37 @@ If you want to display a unix command prompt session, then it needs to be put in
 
 .. code-block:: sh
 
-   .. code-block:: sh\n    :caption: commandOut\n
+   .. code-block:: sh
+    :caption: bconsole command line options
 
+    Usage: bconsole [-s] [-c config_file] [-d debug_level]
+           -D <dir>    select a Director
+           -l          list Directors defined
+           -c <file>   set configuration file to file
+           -d <nn>     set debug level to <nn>
+           -dt         print timestamp in debug output
+           -n          no conio
+           -s          no signals
+           -u <nn>     set command execution timeout to <nn> seconds
+           -t          test - read configuration and exit
+           -?          print this message.
+
+The output should look like this:
+
+.. code-block:: sh
+    :caption: bconsole command line options
+
+    Usage: bconsole [-s] [-c config_file] [-d debug_level]
+           -D <dir>    select a Director
+           -l          list Directors defined
+           -c <file>   set configuration file to file
+           -d <nn>     set debug level to <nn>
+           -dt         print timestamp in debug output
+           -n          no conio
+           -s          no signals
+           -u <nn>     set command execution timeout to <nn> seconds
+           -t          test - read configuration and exit
+           -?          print this message.
 
 Logging
 -------
@@ -202,7 +318,21 @@ If you want to display bareos specific logs, then they need to be put in a code 
 
 .. code-block:: sh
 
-   .. code-block:: sh\n    :caption: logging\n
+   .. code-block:: sh
+    :caption: bareos.log
+
+    08-Sep 12:58 win-fd JobId 10: secure_erase: executing C:/cygwin64/bin/shred.exe "C:/temp/bareos-restores/C/Program Files/Bareos/Plugins/bareos_fd_consts.py"
+    08-Sep 12:58 win-fd JobId 10: secure_erase: executing C:/cygwin64/bin/shred.exe "C:/temp/bareos-restores/C/Program Files/Bareos/Plugins/bareos_sd_consts.py"
+    08-Sep 12:58 win-fd JobId 10: secure_erase: executing C:/cygwin64/bin/shred.exe "C:/temp/bareos-restores/C/Program Files/Bareos/Plugins/bpipe-fd.dll"
+
+The output should look like this:
+
+.. code-block:: sh
+    :caption: bareos.log
+
+    08-Sep 12:58 win-fd JobId 10: secure_erase: executing C:/cygwin64/bin/shred.exe "C:/temp/bareos-restores/C/Program Files/Bareos/Plugins/bareos_fd_consts.py"
+    08-Sep 12:58 win-fd JobId 10: secure_erase: executing C:/cygwin64/bin/shred.exe "C:/temp/bareos-restores/C/Program Files/Bareos/Plugins/bareos_sd_consts.py"
+    08-Sep 12:58 win-fd JobId 10: secure_erase: executing C:/cygwin64/bin/shred.exe "C:/temp/bareos-restores/C/Program Files/Bareos/Plugins/bpipe-fd.dll"
 
 
 System Command
@@ -320,8 +450,8 @@ The output should look like this:
 :strong:`localhost`
 
 
-Job
----
+Job Name
+--------
 
 If you want to display a linux job name, the following formatting should be used: 
 
@@ -332,14 +462,14 @@ If you want to display a linux job name, the following formatting should be used
 
 .. code-block:: sh
 
-   **RestoreFiles.conf**:sup:`Dir`:sub:`job`
+   **BackupCatalog**:sup:`Dir`:sub:`job`
 
 * Superscript: The daemon to which the job belongs to. There can be 3 types of daemons: 'Dir', 'Fd', 'Sd'
 * Subscript: The resource type of the job.
 
 The output should look like this:
 
-**RestoreFiles.conf**:sup:`Dir`:sub:`job`
+**BackupCatalog**:sup:`Dir`:sub:`job`
 
 
 Name
@@ -535,11 +665,11 @@ If you want to display a path where registry key is defined, this formatting sho
 
 .. code-block:: sh
    
-   **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BackupRestore\FilesNotToBackup**
+   ``HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BackupRestore\FilesNotToBackup``
 
 The output should look like this:
 
-**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BackupRestore\FilesNotToBackup**
+``HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BackupRestore\FilesNotToBackup``
 
 
 Variable
@@ -602,42 +732,23 @@ The output should look like this:
 Recycle = **yes**
 
 
-Directive
----------
+Configuration Line
+------------------
 
-If you want to display a directive name, the following formatting should be used:
-
-..   \newcommand{\configdirective}[1]{\path!#1!}
-      
-      Post Conversion Changes
-      ${PERL} 's#:raw-latex:`\\configdirective\{(.*?)\}`#:strong:`\1`#g'  ${DESTFILE}
-
-.. code-block:: sh
-
-   :strong:`Lan Address`
-
-The output should look like this:
-   
-:strong:`Lan Address`
-
-
-Directive Value
----------------
-
-If you want to display a directive name along with its value, the following formatting should be used:
+If you want to display a line from the configuration, the following formatting should be used:
 
 .. \newcommand{\configline}[1]{\path|#1|}
    
    Post Conversion Changes
    ${PERL} 's#:raw-latex:`\\configline\{(.*?)\}`#:strong:`\1`#g'  ${DESTFILE}
 
-..code-block:: sh
+.. code-block:: sh
    
-   :strong:`Action On Purge=Truncate`
+   :strong:`Append = "/var/log/bareos/bareos-fd.log" = all, !skipped, !restored`
 
 The output should look like this:
 
-:strong:`Action On Purge=Truncate`
+:strong:`Append = "/var/log/bareos/bareos-fd.log" = all, !skipped, !restored`
 
 
 Operating System
@@ -687,11 +798,11 @@ If you want to display since which version a particular a feature is present or 
 
 .. code-block:: sh
 
-   16.2.4
+   Version >= 16.2.4
 
 The output should look like this:
 
-16.2.4
+Version >= 16.2.4
 
 
 Resource Directive

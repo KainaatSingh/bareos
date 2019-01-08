@@ -10,4 +10,8 @@ Bareos Style Guide
    :numbered:
 
    introduction
-   guidelines
+   important_text
+   seldom_text
+   text_replacing
+   images
+   releases
