@@ -35,6 +35,7 @@ rst_epilog = '''
 .. |sqlite| replace:: Sqlite
 .. |vmware| replace:: VMware
 .. |vsphere| replace:: VMware vSphere
+.. |bconsole| replace:: Bareos Console
 
 '''
 
@@ -49,10 +50,18 @@ rst_epilog = '''
 extensions = ['sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.autosectionlabel',
-    'sphinxcontrib.plantuml'
+    'sphinxcontrib.plantuml',
+    'sphinxcontrib.blockdiag',
+    'sphinxcontrib.nwdiag',
+    'sphinxcontrib.seqdiag',
+    'sphinxcontrib.actdiag',
+    'sphinx_issues',
     ]
 plantuml = 'java  -Djava.awt.headless=true -jar /usr/share/plantuml/plantuml.jar'
 #plantuml = 'java  -Djava.awt.headless=true -jar /usr/share/java/plantuml.jar'
+
+issues_uri = 'https://bugs.bareos.org/view.php?id={issue}'
+issues_pr_uri = 'https://github.com/bareos/bareos/pull/{pr}'
 
 
 # Add any paths that contain templates here, relative to this directory.
@@ -74,9 +83,9 @@ author = 'Bareos GmbH & Co. KG'
 
 
 # auto detect version info from version.h
-import os
+import os,re
 release = os.popen('./get-version.sh').read()
-version = release[:4]
+version = re.match(r'\d+\.\d+',release).group()
 #print release
 #print version
 
@@ -210,3 +219,17 @@ texinfo_documents = [
      author, 'BareosMainReference', 'One line description of project.',
      'Miscellaneous'),
 ]
+
+
+import re
+# settings for sphinxcontrib-versioning
+scv_whitelist_branches = (re.compile(r'^master$'),
+#        re.compile('sphinx-versioning$'),
+        re.compile(r'^bareos-18.2$'))
+scv_show_banner = True
+scv_priority = 'branches'
+scv_root_ref = 'bareos-18.2'
+scv_banner_main_ref = 'bareos-18.2'
+
+#scv_root_ref = 'dev/pstorz/bareos-18.2/sphinx-versioning'
+#scv_banner_main_ref = 'dev/pstorz/bareos-18.2/sphinx-versioning'
