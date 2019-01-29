@@ -82,9 +82,11 @@ author = 'Bareos GmbH & Co. KG'
 
 
 # auto detect version info from version.h
-import os,re
-release = os.popen('./get-version.sh').read()
-version = re.match(r'\d+\.\d+',release).group()
+#import os,re
+#release = os.popen('./get-version.sh').read()
+#version = release[:4]
+#version = re.match(r'\d+\.\d+',release).group()
+
 #print release
 #print version
 
@@ -232,3 +234,10 @@ scv_banner_main_ref = 'bareos-18.2'
 
 #scv_root_ref = 'dev/pstorz/bareos-18.2/sphinx-versioning'
 #scv_banner_main_ref = 'dev/pstorz/bareos-18.2/sphinx-versioning'
+
+#----------------registering limitation class and nodes---------------------------
+
+import os
+import sys
+sys.path.append(os.path.abspath("./extensions"))
+extensions.append('limitation')
