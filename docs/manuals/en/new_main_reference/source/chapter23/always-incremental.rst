@@ -42,9 +42,14 @@ Always Incremental Concept
 
 The Always Incremental Backup Scheme does only incremental backups of clients, which reduces the amount of data transferred over the network to a minimum.
 
-:index:`Always Incremental Backup: Only suitable for file based backups. <triple: Limitation; Always Incremental Backup; Only suitable for file based backups>`
+.. limitation:: Limitation Always Incremental Backup: Only suitable for file based backups.
+
+   .. index::
+      triple: Limitation; Always Incremental Backup; Only suitable for file based backups
+
    Always Incremental backups are only suitable for file based backups. Other data can not be combined on the server side (e.g. vmware plugings, NDMP, ...)
    
+
 
 
 The Always Incremental Backup Scheme works as follows:
@@ -86,53 +91,53 @@ Always Incremental Backup Job
 To configure a job to use Always Incremental Backup Scheme, following configuration is required:
 
 .. code-block:: sh
-   :caption: bareos-dir.d/job/example.conf
+    :caption: bareos-dir.d/job/example.conf
 
-   Job {
-       ...
-       Accurate = yes
-       Always Incremental = yes
-       Always Incremental Job Retention = <timespec>
-       Always Incremental Keep Number = <number>
-       ...
-   }
+    Job {
+        ...
+        Accurate = yes
+        Always Incremental = yes
+        Always Incremental Job Retention = <timespec>
+        Always Incremental Keep Number = <number>
+        ...
+    }
 
 **Accurate**:sup:`Dir`:sub:`Job`\ = **yes**
-   is required to detect deleted files and prevent that they are kept in the consolidated backup jobs.
+    is required to detect deleted files and prevent that they are kept in the consolidated backup jobs.
 
 **Always Incremental**:sup:`Dir`:sub:`Job`\ = **yes**
-   enables the Always Incremental feature.
+    enables the Always Incremental feature.
 
 **Always Incremental Job Retention**:sup:`Dir`:sub:`Job`\ 
-   set the age where incrementals of this job will be kept, older jobs will be consolidated.
+    set the age where incrementals of this job will be kept, older jobs will be consolidated.
 
 **Always Incremental Keep Number**:sup:`Dir`:sub:`Job`\ 
-   sets the number of incrementals that will be kept without regarding the age. This should make sure that a certain history of a job will be kept even if the job is not executed for some time.
+    sets the number of incrementals that will be kept without regarding the age. This should make sure that a certain history of a job will be kept even if the job is not executed for some time.
 
 **Always Incremental Max Full Age**:sup:`Dir`:sub:`Job`\ 
-   is described later, see :ref:`section-AlwaysIncrementalMaxFullAge`.
+    is described later, see :ref:`section-AlwaysIncrementalMaxFullAge`.
 
 Consolidate Job
 ~~~~~~~~~~~~~~~
 
 .. code-block:: sh
-   :caption: bareos-dir.d/job/Consolidate.conf
+    :caption: bareos-dir.d/job/Consolidate.conf
 
-   Job {
-       Name = "Consolidate"
-       Type = "Consolidate"
-       Accurate = "yes"
-       JobDefs = "DefaultJob"
-   }
+    Job {
+        Name = "Consolidate"
+        Type = "Consolidate"
+        Accurate = "yes"
+        JobDefs = "DefaultJob"
+    }
 
 \resourceDirectiveValue{Dir}{Job}{Type}{Consolidate}
-   configures a job to be a consolidate job. This type have been introduced with the Always Incremental feature. When used, it automatically trigger the consolidation of incremental jobs that need to be consolidated.
+    configures a job to be a consolidate job. This type have been introduced with the Always Incremental feature. When used, it automatically trigger the consolidation of incremental jobs that need to be consolidated.
 
 **Accurate**:sup:`Dir`:sub:`Job`\ = **yes**
-   let the generated virtual backup job keep the accurate information.
+    let the generated virtual backup job keep the accurate information.
 
 **Max Full Consolidations**:sup:`Dir`:sub:`Job`\ 
-   is described later, see :ref:`section-MaxFullConsolidations`.
+    is described later, see :ref:`section-MaxFullConsolidations`.
 
 The **Consolidate**:sup:`Dir`:sub:`job`\  job evaluates all jobs configured with **Always Incremental**:sup:`Dir`:sub:`Job`\ = **yes**. When a job is selected for consolidation, all job runs are taken into account, independent of the pool and storage where they are located.
 
@@ -153,51 +158,51 @@ Storages and Pools
 For the Always Incremental Backup Scheme at least two storages are needed. See :ref:`section-MultipleStorageDevices` how to setup multiple storages.
 
 .. code-block:: sh
-   :caption: bareos-dir.d/pool/AI-Incremental.conf
+    :caption: bareos-dir.d/pool/AI-Incremental.conf
 
-   Pool {
-     Name = AI-Incremental
-     Pool Type = Backup
-     Recycle = yes                       # Bareos can automatically recycle Volumes
-     Auto Prune = yes                    # Prune expired volumes
-     Volume Retention = 360 days         # How long should jobs be kept?
-     Maximum Volume Bytes = 50G          # Limit Volume size to something reasonable
-     Label Format = "AI-Incremental-"
-     Volume Use Duration = 23h
-     Storage = File1
-     Next Pool = AI-Consolidated         # consolidated jobs go to this pool
-   }
-
-.. code-block:: sh
-   :caption: bareos-dir.d/pool/AI-Consolidated.conf
-
-   Pool {
-     Name = AI-Consolidated
-     Pool Type = Backup
-     Recycle = yes                       # Bareos can automatically recycle Volumes
-     Auto Prune = yes                    # Prune expired volumes
-     Volume Retention = 360 days         # How long should jobs be kept?
-     Maximum Volume Bytes = 50G          # Limit Volume size to something reasonable
-     Label Format = "AI-Consolidated-"
-     Volume Use Duration = 23h
-     Storage = File2
-     Next Pool = AI-Longterm             # copy jobs write to this pool
-   }
+    Pool {
+      Name = AI-Incremental
+      Pool Type = Backup
+      Recycle = yes                       # Bareos can automatically recycle Volumes
+      Auto Prune = yes                    # Prune expired volumes
+      Volume Retention = 360 days         # How long should jobs be kept?
+      Maximum Volume Bytes = 50G          # Limit Volume size to something reasonable
+      Label Format = "AI-Incremental-"
+      Volume Use Duration = 23h
+      Storage = File1
+      Next Pool = AI-Consolidated         # consolidated jobs go to this pool
+    }
 
 .. code-block:: sh
-   :caption: bareos-dir.d/pool/AI-Longterm.conf
+    :caption: bareos-dir.d/pool/AI-Consolidated.conf
 
-   Pool {
-     Name = AI-Longterm
-     Pool Type = Backup
-     Recycle = yes                       # Bareos can automatically recycle Volumes
-     Auto Prune = yes                    # Prune expired volumes
-     Volume Retention = 10 years         # How long should jobs be kept?
-     Maximum Volume Bytes = 50G          # Limit Volume size to something reasonable
-     Label Format = "AI-Longterm-"
-     Volume Use Duration = 23h
-     Storage = File1
-   }
+    Pool {
+      Name = AI-Consolidated
+      Pool Type = Backup
+      Recycle = yes                       # Bareos can automatically recycle Volumes
+      Auto Prune = yes                    # Prune expired volumes
+      Volume Retention = 360 days         # How long should jobs be kept?
+      Maximum Volume Bytes = 50G          # Limit Volume size to something reasonable
+      Label Format = "AI-Consolidated-"
+      Volume Use Duration = 23h
+      Storage = File2
+      Next Pool = AI-Longterm             # copy jobs write to this pool
+    }
+
+.. code-block:: sh
+    :caption: bareos-dir.d/pool/AI-Longterm.conf
+
+    Pool {
+      Name = AI-Longterm
+      Pool Type = Backup
+      Recycle = yes                       # Bareos can automatically recycle Volumes
+      Auto Prune = yes                    # Prune expired volumes
+      Volume Retention = 10 years         # How long should jobs be kept?
+      Maximum Volume Bytes = 50G          # Limit Volume size to something reasonable
+      Label Format = "AI-Longterm-"
+      Volume Use Duration = 23h
+      Storage = File1
+    }
 
 **AI-Longterm**:sup:`Dir`:sub:`pool`\  is optional and will be explained in :ref:`section-AlwaysIncrementalLongTermStorage`.
 
@@ -207,31 +212,31 @@ How it works
 The following configuration extract shows how a client backup is configured for always incremental Backup. The Backup itself is scheduled every night to run as incremental backup, while the consolidation is scheduled to run every day.
 
 .. code-block:: sh
-   :caption: bareos-dir.d/job/BackupClient1.conf
+    :caption: bareos-dir.d/job/BackupClient1.conf
 
-   Job {
-       Name = "BackupClient1"
-       JobDefs = "DefaultJob"
+    Job {
+        Name = "BackupClient1"
+        JobDefs = "DefaultJob"
 
-       # Always incremental settings
-       AlwaysIncremental = yes
-       AlwaysIncrementalJobRetention = 7 days
+        # Always incremental settings
+        AlwaysIncremental = yes
+        AlwaysIncrementalJobRetention = 7 days
 
-       Accurate = yes
+        Accurate = yes
 
-       Pool = AI-Incremental
-       Full Backup Pool = AI-Consolidated
-   }
+        Pool = AI-Incremental
+        Full Backup Pool = AI-Consolidated
+    }
 
 .. code-block:: sh
-   :caption: bareos-dir.d/job/Consolidate.conf
+    :caption: bareos-dir.d/job/Consolidate.conf
 
-   Job {
-       Name = "Consolidate"
-       Type = "Consolidate"
-       Accurate = "yes"
-       JobDefs = "DefaultJob"
-   }
+    Job {
+        Name = "Consolidate"
+        Type = "Consolidate"
+        Accurate = "yes"
+        JobDefs = "DefaultJob"
+    }
 
 The following image shows the available backups for each day:
 
@@ -343,16 +348,16 @@ This is of course not desirable so the directive **Max Full Consolidations**:sup
 **Max Full Consolidations**:sup:`Dir`:sub:`Job`\  needs to be configured in the \resourceDirectiveValue{Dir}{Job}{Type}{Consolidate} job:
 
 .. code-block:: sh
-   :caption: bareos-dir.d/job/Consolidate.conf
+    :caption: bareos-dir.d/job/Consolidate.conf
 
-   Job {
-       Name = "Consolidate"
-       Type = "Consolidate"
-       Accurate = "yes"
-       JobDefs = "DefaultJob"
+    Job {
+        Name = "Consolidate"
+        Type = "Consolidate"
+        Accurate = "yes"
+        JobDefs = "DefaultJob"
 
-       Max Full Consolidations = 1
-   }
+        Max Full Consolidations = 1
+    }
 
 If **Max Full Consolidations**:sup:`Dir`:sub:`Job`\  is configured, the consolidation job will not start more than the specified Consolidations that include the Full Backup.
 
@@ -395,17 +400,17 @@ The configuration of archiving via copy job is simple, just configure a copy job
 As all full backups go into the **AI-Consolidated**:sup:`Dir`:sub:`pool`\ , we just copy all uncopied backups in the **AI-Consolidated**:sup:`Dir`:sub:`pool`\  to a longterm pool:
 
 .. code-block:: sh
-   :caption: bareos-dir.d/job/CopyLongtermFull.conf
+    :caption: bareos-dir.d/job/CopyLongtermFull.conf
 
-   Job {
-     Name = "CopyLongtermFull"
-     Schedule = LongtermFull
-     Type = Copy
-     Level = Full
-     Pool = AI-Consolidated
-     Selection Type = PoolUncopiedJobs
-     Messages = Standard
-   }
+    Job {
+      Name = "CopyLongtermFull"
+      Schedule = LongtermFull
+      Type = Copy
+      Level = Full
+      Pool = AI-Consolidated
+      Selection Type = PoolUncopiedJobs
+      Messages = Standard
+    }
 
 As can be seen in the plot, the copy job creates a copy of the current full backup that is available and is already 7 days old.
 
@@ -421,26 +426,26 @@ Virtual Full Jobs
 The alternative to Copy Jobs is creating a virtual Full Backup Job when the data should be stored in a long-term pool.
 
 .. code-block:: sh
-   :caption: bareos-dir.d/job/VirtualLongtermFull.conf
+    :caption: bareos-dir.d/job/VirtualLongtermFull.conf
 
-   Job {
-     Name = "VirtualLongtermFull"
-     Client = bareos-fd
-     FileSet = SelfTest
-     Schedule = LongtermFull
-     Type = Backup
-     Level = VirtualFull
-     Pool = AI-Consolidated
-     Messages = Standard
+    Job {
+      Name = "VirtualLongtermFull"
+      Client = bareos-fd
+      FileSet = SelfTest
+      Schedule = LongtermFull
+      Type = Backup
+      Level = VirtualFull
+      Pool = AI-Consolidated
+      Messages = Standard
 
-     Priority = 13                 # run after  Consolidate
-     Run Script {
-           console = "update jobid=%i jobtype=A"
-           Runs When = After
-           Runs On Client = No
-           Runs On Failure = No
-     }
-   }
+      Priority = 13                 # run after  Consolidate
+      Run Script {
+            console = "update jobid=%i jobtype=A"
+            Runs When = After
+            Runs On Client = No
+            Runs On Failure = No
+      }
+    }
 
 To make sure the longterm \resourceDirectiveValue{Dir}{Job}{Level}{VirtualFull} is not taken as base for the next incrementals, the job type of the copied job is set to \resourceDirectiveValue{Dir}{Job}{Type}{Archive} with the **Run Script**:sup:`Dir`:sub:`Job`\ .
 
@@ -484,9 +489,9 @@ First setup client, fileset, job and schedule as needed for a always incremental
 Run the first backup but make sure that you choose the remote storage to be used.
 
 .. code-block:: sh
-   :caption: run
+    :caption: run
 
-   *run job=BackupClient-remote level=Full storage=File-remote
+    *run job=BackupClient-remote level=Full storage=File-remote
 
 Transport the volumes that were used for that backup over to the local storage daemon and make them available to the local storage daemon. This can be either by putting the tapes into the local changer or by storing the file volumes into the local file volume directory.
 
@@ -497,31 +502,31 @@ Now tell the director that the volume now belongs to the local storage daemon.
 List volumes shows that the volumes used still belong to the remote storage:
 
 .. code-block:: sh
-   :caption: list volumes
+    :caption: list volumes
 
-   *<input>list volumes</input>
-   .....
-   Pool: Full
-   +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+-------------+
-   | MediaId | VolumeName | VolStatus | Enabled | VolBytes | VolFiles | VolRetention | Recycle | Slot | InChanger | MediaType | LastWritten         | Storage     |
-   +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+-------------+
-   | 1       | Full-0001  | Append    | 1       | 38600329 | 0        | 31536000     | 1       | 0    | 0         | File      | 2016-07-28 14:00:47 | File-remote |
-   +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+-------------+
+    *<input>list volumes</input>
+    .....
+    Pool: Full
+    +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+-------------+
+    | MediaId | VolumeName | VolStatus | Enabled | VolBytes | VolFiles | VolRetention | Recycle | Slot | InChanger | MediaType | LastWritten         | Storage     |
+    +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+-------------+
+    | 1       | Full-0001  | Append    | 1       | 38600329 | 0        | 31536000     | 1       | 0    | 0         | File      | 2016-07-28 14:00:47 | File-remote |
+    +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+-------------+
 
 Use :strong:`update volume` to set the right storage and check with list volumes that it worked:
 
 .. code-block:: sh
-   :caption: update volume
+    :caption: update volume
 
-   *<input>update volume=Full-0001 storage=File</input>
-   *<input>list volumes</input>
-   ...
-   Pool: Full
-   +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+---------+
-   | MediaId | VolumeName | VolStatus | Enabled | VolBytes | VolFiles | VolRetention | Recycle | Slot | InChanger | MediaType | LastWritten         | Storage |
-   +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+---------+
-   | 1       | Full-0001  | Append    | 1       | 38600329 | 0        | 31536000     | 1       | 0    | 0         | File      | 2016-07-28 14:00:47 | File    |
-   +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+---------+
+    *<input>update volume=Full-0001 storage=File</input>
+    *<input>list volumes</input>
+    ...
+    Pool: Full
+    +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+---------+
+    | MediaId | VolumeName | VolStatus | Enabled | VolBytes | VolFiles | VolRetention | Recycle | Slot | InChanger | MediaType | LastWritten         | Storage |
+    +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+---------+
+    | 1       | Full-0001  | Append    | 1       | 38600329 | 0        | 31536000     | 1       | 0    | 0         | File      | 2016-07-28 14:00:47 | File    |
+    +---------+------------+-----------+---------+----------+----------+--------------+---------+------+-----------+-----------+---------------------+---------+
 
 Now the remote storage daemon can be disabled as it is not needed anymore.
 

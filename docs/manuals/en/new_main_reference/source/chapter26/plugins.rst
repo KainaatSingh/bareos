@@ -46,38 +46,38 @@ The bpipe plugin is so simple and flexible, you may call it the "Swiss Army Knif
 The bpipe plugin is specified in the Include section of your Job’s FileSet resource in your :file:`bareos-dir.conf`.
 
 .. code-block:: sh
-   :caption: bpipe fileset
+    :caption: bpipe fileset
 
-   FileSet {
-     Name = "MyFileSet"
-     Include {
-       Options {
-         signature = MD5
-         compression = gzip
-       }
-       Plugin = "bpipe:file=<filepath>:reader=<readprogram>:writer=<writeprogram>
-     }
-   }
+    FileSet {
+      Name = "MyFileSet"
+      Include {
+        Options {
+          signature = MD5
+          compression = gzip
+        }
+        Plugin = "bpipe:file=<filepath>:reader=<readprogram>:writer=<writeprogram>
+      }
+    }
 
 The syntax and semantics of the Plugin directive require the first part of the string up to the colon to be the name of the plugin. Everything after the first colon is ignored by the File daemon but is passed to the plugin. Thus the plugin writer may define the meaning of the rest of the string as he wishes. The full syntax of the plugin directive as interpreted by the bpipe plugin is:
 
 .. code-block:: sh
-   :caption: bpipe directive
+    :caption: bpipe directive
 
-   Plugin = "<plugin>:file=<filepath>:reader=<readprogram>:writer=<writeprogram>"
+    Plugin = "<plugin>:file=<filepath>:reader=<readprogram>:writer=<writeprogram>"
 
 plugin
-   is the name of the plugin with the trailing -fd.so stripped off, so in this case, we would put bpipe in the field.
+    is the name of the plugin with the trailing -fd.so stripped off, so in this case, we would put bpipe in the field.
 
 filepath
-   specifies the namespace, which for bpipe is the pseudo path and filename under which the backup will be saved. This pseudo path and filename will be seen by the user in the restore file tree. For example, if the value is :strong:`/MySQL/mydump.sql`, the data backed up by the plugin will be put under that :emphasis:`pseudo` path and filename. You must be careful to choose a naming convention that is unique to avoid a conflict with a path and filename that actually
-   exists on your system.
+    specifies the namespace, which for bpipe is the pseudo path and filename under which the backup will be saved. This pseudo path and filename will be seen by the user in the restore file tree. For example, if the value is :strong:`/MySQL/mydump.sql`, the data backed up by the plugin will be put under that :emphasis:`pseudo` path and filename. You must be careful to choose a naming convention that is unique to avoid a conflict with a path and filename that actually
+    exists on your system.
 
 readprogram
-   for the bpipe plugin specifies the "reader" program that is called by the plugin during backup to read the data. bpipe will call this program by doing a popen on it.
+    for the bpipe plugin specifies the "reader" program that is called by the plugin during backup to read the data. bpipe will call this program by doing a popen on it.
 
 writeprogram
-   for the bpipe plugin specifies the "writer" program that is called by the plugin during restore to write the data back to the filesystem.
+    for the bpipe plugin specifies the "writer" program that is called by the plugin during restore to write the data back to the filesystem.
 
 Please note that the two items above describing the "reader" and "writer", these programs are "executed" by Bareos, which means there is no shell interpretation of any command line arguments you might use. If you want to use shell characters (redirection of input or output, ...), then we recommend that you put your command or commands in a shell script and execute the script. In addition if you backup a file with reader program, when running the writer program during the restore, Bareos will not
 automatically create the path to the file. Either the path must exist, or you must explicitly do so with your command or in a shell script.
@@ -142,18 +142,18 @@ Command Plugins
 Command plugins are used to replace or extend the FileSet definition in the File Section. If you have a command-plugin, you can use it like in this example:
 
 .. code-block:: sh
-   :caption: bareos-dir.conf: Python FD command plugins
+    :caption: bareos-dir.conf: Python FD command plugins
 
-   FileSet {
-     Name = "mysql"
-     Include {
-       Options {
-         Signature = MD5 # calculate md5 checksum per file
-       }
-       File = "/etc"
-       Plugin = "python:module_path=/usr/lib/bareos/plugins:module_name=bareos-fd-mysql"
-     }
-   } 
+    FileSet {
+      Name = "mysql"
+      Include {
+        Options {
+          Signature = MD5 # calculate md5 checksum per file
+        }
+        File = "/etc"
+        Plugin = "python:module_path=/usr/lib/bareos/plugins:module_name=bareos-fd-mysql"
+      }
+    } 
 
 :index:`[TAG=MySQL->Backup] <pair: MySQL; Backup>` This example uses the :ref:`MySQL plugin <backup-mysql-python>` to backup MySQL dumps in addition to :file:`/etc`.
 
@@ -165,19 +165,19 @@ Option plugins are activated in the Options resource of a FileSet definition.
 Example:
 
 .. code-block:: sh
-   :caption: bareos-dir.conf: Python FD option plugins
+    :caption: bareos-dir.conf: Python FD option plugins
 
-   FileSet {
-     Name = "option"
-     Include {
-       Options {
-         Signature = MD5 # calculate md5 checksum per file
-         Plugin = "python:module_path=/usr/lib/bareos/plugins:module_name=bareos-fd-file-interact"
-       }
-       File = "/etc"
-       File = "/usr/lib/bareos/plugins"
-     }
-   }
+    FileSet {
+      Name = "option"
+      Include {
+        Options {
+          Signature = MD5 # calculate md5 checksum per file
+          Plugin = "python:module_path=/usr/lib/bareos/plugins:module_name=bareos-fd-file-interact"
+        }
+        File = "/etc"
+        File = "/usr/lib/bareos/plugins"
+      }
+    }
 
 This plugin bareos-fd-file-interact from https://github.com/bareos/bareos-contrib/tree/master/fd-plugins/options-plugin-sample has a method that is called before and after each file that goes into the backup, it can be used as a template for whatever plugin wants to interact with files before or after backup.
 
@@ -230,19 +230,19 @@ Multi-core cpus will be utilized when using parallel jobs as the compression is 
 When the autoxflate plugin is configured, it will write some status information into the joblog.
 
 .. code-block:: sh
-   :caption: used compression algorithm
+    :caption: used compression algorithm
 
-   autodeflation: compressor on device FileStorage is FZ4H
-
-.. code-block:: sh
-   :caption: configured inflation and deflation blocks
-
-   autoxflate-sd.c: FileStorage OUT:[SD->inflate=yes->deflate=yes->DEV] IN:[DEV->inflate=yes->deflate=yes->SD]
+    autodeflation: compressor on device FileStorage is FZ4H
 
 .. code-block:: sh
-   :caption: overall deflation/inflation ratio
+    :caption: configured inflation and deflation blocks
 
-   autoxflate-sd.c: deflate ratio: 50.59%
+    autoxflate-sd.c: FileStorage OUT:[SD->inflate=yes->deflate=yes->DEV] IN:[DEV->inflate=yes->deflate=yes->SD]
+
+.. code-block:: sh
+    :caption: overall deflation/inflation ratio
+
+    autoxflate-sd.c: deflate ratio: 50.59%
 
 Additional **Auto XFlate On Replication**:sup:`Sd`:sub:`Storage`\  can be configured at the Storage resource.
 
@@ -312,7 +312,7 @@ The initial setup of SCSI crypto looks something like this:
 
    .. code-block:: sh
 
-      bscrypto -g -
+       bscrypto -g -
 
 For details see :ref:`bscrypto <bscrypto>`.
 
@@ -342,15 +342,15 @@ You can also set up the extra capability on :command:`bscrypto` and :command:`ba
 
 .. code-block:: sh
 
-   setcap cap_sys_rawio=ep bscrypto
-   setcap cap_sys_rawio=ep bareos-sd
+    setcap cap_sys_rawio=ep bscrypto
+    setcap cap_sys_rawio=ep bareos-sd
 
 Check the setting with
 
 .. code-block:: sh
 
-   getcap -v bscrypto
-   getcap -v bareos-sd
+    getcap -v bscrypto
+    getcap -v bareos-sd
 
 :command:`getcap` and :command:`setcap` are part of libcap-progs.
 
@@ -369,7 +369,7 @@ For SMF make sure you have something like this in the instance block:
 
 .. code-block:: sh
 
-   <method_context working_directory=":default"> <method_credential user="bareos" group="bareos" privileges="basic,sys_devices"/> </method_context>
+    <method_context working_directory=":default"> <method_credential user="bareos" group="bareos" privileges="basic,sys_devices"/> </method_context>
 
 Changes in bareos-sd.conf
 '''''''''''''''''''''''''
@@ -404,7 +404,7 @@ Restart the Storage Daemon and the Director. After this you can label new volume
 
 .. code-block:: sh
 
-   label slots=1-5 barcodes encrypt
+    label slots=1-5 barcodes encrypt
 
 Disaster Recovery
 ^^^^^^^^^^^^^^^^^
@@ -422,7 +422,7 @@ Most of the times the needed information, e.g. the bootstrap info, is available 
 
 .. code-block:: sh
 
-   bscrypto -p /var/lib/bareos/bareos-sd.<portnr>.cryptoc
+    bscrypto -p /var/lib/bareos/bareos-sd.<portnr>.cryptoc
 
 -  A valid BSR file containing the location of the last safe of the database makes recovery much easier. Adding a post script to the database save job could collect the needed info and make sure its stored somewhere safe.
 
@@ -430,10 +430,10 @@ Most of the times the needed information, e.g. the bootstrap info, is available 
 
    .. code-block:: sh
 
-      bextract -D <director_name> -c bareos-sd.conf -V <volname> \ /dev/nst0 /tmp -b bootstrap.bsr
-      /usr/lib64/bareos/create_bareos_database
-      /usr/lib64/bareos/grant_bareos_privileges
-      psql bareos < /tmp/var/lib/bareos/bareos.sql
+       bextract -D <director_name> -c bareos-sd.conf -V <volname> \ /dev/nst0 /tmp -b bootstrap.bsr
+       /usr/lib64/bareos/create_bareos_database
+       /usr/lib64/bareos/grant_bareos_privileges
+       psql bareos < /tmp/var/lib/bareos/bareos.sql
 
 Or something similar (change paths to follow where you installed the software or where the package put it).
 
@@ -500,47 +500,47 @@ The director plugins are configured in the Job-Resource (or JobDefs resource). T
 Single Python Plugin Loading Example:
 
 .. code-block:: sh
-   :caption: bareos-dir.conf: Single Python Plugin Loading Example
+    :caption: bareos-dir.conf: Single Python Plugin Loading Example
 
-   Director {
-     # ...
-     # Plugin directory
-     Plugin Directory = /usr/lib64/bareos/plugins
-     # Load the python plugin
-     Plugin Names = "python"
-   }
+    Director {
+      # ...
+      # Plugin directory
+      Plugin Directory = /usr/lib64/bareos/plugins
+      # Load the python plugin
+      Plugin Names = "python"
+    }
 
-   JobDefs {
-     Name = "DefaultJob"
-     Type = Backup
-     # ...
-     # Load the class based plugin with testoption=testparam
-     Dir Plugin Options = "python:instance=0:module_path=/usr/lib64/bareos/plugins:module_name=bareos-dir-class-plugins:testoption=testparam
-     # ...
-   }
+    JobDefs {
+      Name = "DefaultJob"
+      Type = Backup
+      # ...
+      # Load the class based plugin with testoption=testparam
+      Dir Plugin Options = "python:instance=0:module_path=/usr/lib64/bareos/plugins:module_name=bareos-dir-class-plugins:testoption=testparam
+      # ...
+    }
 
 Multiple Python Plugin Loading Example:
 
 .. code-block:: sh
-   :caption: bareos-dir.conf: Multiple Python Plugin Loading Example
+    :caption: bareos-dir.conf: Multiple Python Plugin Loading Example
 
-   Director {
-     # ...
-     # Plugin directory
-     Plugin Directory = /usr/lib64/bareos/plugins
-     # Load the python plugin
-     Plugin Names = "python"
-   }
+    Director {
+      # ...
+      # Plugin directory
+      Plugin Directory = /usr/lib64/bareos/plugins
+      # Load the python plugin
+      Plugin Names = "python"
+    }
 
-   JobDefs {
-     Name = "DefaultJob"
-     Type = Backup
-     # ...
-     # Load the class based plugin with testoption=testparam
-     Dir Plugin Options = "python:instance=0:module_path=/usr/lib64/bareos/plugins:module_name=bareos-dir-class-plugins:testoption=testparam1
-     Dir Plugin Options = "python:instance=1:module_path=/usr/lib64/bareos/plugins:module_name=bareos-dir-class-plugins:testoption=testparam2
-     # ...
-   }
+    JobDefs {
+      Name = "DefaultJob"
+      Type = Backup
+      # ...
+      # Load the class based plugin with testoption=testparam
+      Dir Plugin Options = "python:instance=0:module_path=/usr/lib64/bareos/plugins:module_name=bareos-dir-class-plugins:testoption=testparam1
+      Dir Plugin Options = "python:instance=1:module_path=/usr/lib64/bareos/plugins:module_name=bareos-dir-class-plugins:testoption=testparam2
+      # ...
+    }
 
 Write your own Python Plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

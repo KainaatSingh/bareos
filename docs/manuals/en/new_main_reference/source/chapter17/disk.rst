@@ -22,15 +22,15 @@ Getting Bareos to write to disk rather than tape in the simplest case is rather 
 
 ::
 
-   Device {
-     Name = FileBackup
-     Media Type = File
-     Archive Device = /var/lib/bareos/storage
-     Random Access = Yes;
-     AutomaticMount = yes;
-     RemovableMedia = no;
-     AlwaysOpen = no;
-   }
+    Device {
+      Name = FileBackup
+      Media Type = File
+      Archive Device = /var/lib/bareos/storage
+      Random Access = Yes;
+      AutomaticMount = yes;
+      RemovableMedia = no;
+      AlwaysOpen = no;
+    }
 
 
 
@@ -40,18 +40,18 @@ Assuming you have the appropriate :strong:`Storage` resource in your Director’
 
 ::
 
-   Storage {
-     Name = FileStorage
-     Address = ...
-     Password = ...
-     Device = FileBackup
-     Media Type = File
-   }
+    Storage {
+      Name = FileStorage
+      Address = ...
+      Password = ...
+      Device = FileBackup
+      Media Type = File
+    }
 
 
 
-Bareos will then write the archive to the file /var/lib/bareos/storage/<volume-name> where <volume-name> is the volume name of a Volume defined in the Pool. For example, if you have labeled a Volume named Vol001, Bareos will write to the file /var/lib/bareos/storage/Vol001. Although you can later move the archive file to another directory, you should not rename it or it will become unreadable by Bareos. This is because each archive has the filename as part of the internal label, and the internal
-label must agree with the system filename before Bareos will use it.
+Bareos will then write the archive to the file **/var/lib/bareos/storage/<volume-name>** where <volume-name> is the volume name of a Volume defined in the Pool. For example, if you have labeled a Volume named **Vol001**, Bareos will write to the file **/var/lib/bareos/storage/Vol001**. Although you can later move the archive file to another directory, you should not rename it or it will become unreadable by Bareos. This is because each archive has the filename as part of the internal label, and
+the internal label must agree with the system filename before Bareos will use it.
 
 Although this is quite simple, there are a number of problems. The first is that unless you specify otherwise, Bareos will always write to the same volume until you run out of disk space. This problem is addressed below.
 
@@ -78,13 +78,13 @@ As mentioned above, each of those directives is specified in the Pool or Pools t
 Volume has been created, it gets its own copy of the Pool defaults, and subsequently changing the Pool will have no effect on existing Volumes. You can either manually change the Volume values, or refresh them from the Pool defaults using the :strong:`update volume` command in the Console. As an example of the use of one of the above, suppose your Pool resource contains:
 
 .. code-block:: sh
-   :caption: Volume Use Duration
+    :caption: Volume Use Duration
 
-   Pool {
-     Name = File
-     Pool Type = Backup
-     Volume Use Duration = 23h
-   }
+    Pool {
+      Name = File
+      Pool Type = Backup
+      Volume Use Duration = 23h
+    }
 
 then if you run a backup once a day (every 24 hours), Bareos will use a new Volume for each backup, because each Volume it writes can only be used for 23 hours after the first write. Note, setting the use duration to 23 hours is not a very good solution for tapes unless you have someone on-site during the weekends, because Bareos will want a new Volume and no one will be present to mount it, so no weekend backups will be done until Monday morning.
 
@@ -103,32 +103,32 @@ Automatic Volume labeling is enabled by making a change to both the :sup:`Dir`\ 
 contains. Thus if you modify your Pool resource to be:
 
 .. code-block:: sh
-   :caption: Label Format
+    :caption: Label Format
 
-   Pool {
-     Name = File
-     Pool Type = Backup
-     Volume Use Duration = 23h
-     Label Format = "Vol"
-   }
+    Pool {
+      Name = File
+      Pool Type = Backup
+      Volume Use Duration = 23h
+      Label Format = "Vol"
+    }
 
 Bareos will create Volume names Vol0001, Vol0002, and so on when new Volumes are needed. Much more complex and elaborate labels can be created using variable expansion defined in the :ref:`Variable Expansion <VarsChapter>` chapter of this manual.
 
 The second change that is necessary to make automatic labeling work is to give the Storage daemon permission to automatically label Volumes. Do so by adding **Label Media**:sup:`Sd`:sub:`Device`\  = yes to the :strong:`Device` resource as follows:
 
 .. code-block:: sh
-   :caption: Label Media = yes
+    :caption: Label Media = yes
 
-   Device {
-     Name = File
-     Media Type = File
-     Archive Device = /var/lib/bareos/storage/
-     Random Access = yes
-     Automatic Mount = yes
-     Removable Media = no
-     Always Open = no
-     Label Media = yes
-   }
+    Device {
+      Name = File
+      Media Type = File
+      Archive Device = /var/lib/bareos/storage/
+      Random Access = yes
+      Automatic Mount = yes
+      Removable Media = no
+      Always Open = no
+      Label Media = yes
+    }
 
 See **Label Format**:sup:`Dir`:sub:`Pool`\  for details about the labeling format.
 
@@ -184,8 +184,8 @@ Concurrent Disk Jobs
 
  Above, we discussed how you could have a single device named **FileBackup**:sup:`Sd`:sub:`Device`  that writes to volumes in :file:`/var/lib/bareos/storage/`. You can, in fact, run multiple concurrent jobs using the Storage definition given with this example, and all the jobs will simultaneously write into the Volume that is being written.
 
-Now suppose you want to use multiple Pools, which means multiple Volumes, or suppose you want each client to have its own Volume and perhaps its own directory such as /home/bareos/client1 and /home/bareos/client2 ... . With the single Storage and Device definition above, neither of these two is possible. Why? Because Bareos disk storage follows the same rules as tape devices. Only one Volume can be mounted on any Device at any time. If you want to simultaneously write multiple Volumes, you will
-need multiple Device resources in your |bareosSd| configuration and thus multiple Storage resources in your |bareosDir| configuration.
+Now suppose you want to use multiple Pools, which means multiple Volumes, or suppose you want each client to have its own Volume and perhaps its own directory such as **/home/bareos/client1** and **/home/bareos/client2** ... . With the single Storage and Device definition above, neither of these two is possible. Why? Because Bareos disk storage follows the same rules as tape devices. Only one Volume can be mounted on any Device at any time. If you want to simultaneously write multiple Volumes,
+you will need multiple Device resources in your |bareosSd| configuration and thus multiple Storage resources in your |bareosDir| configuration.
 
 Okay, so now you should understand that you need multiple Device definitions in the case of different directories or different Pools, but you also need to know that the catalog data that Bareos keeps contains only the Media Type and not the specific storage device. This permits a tape for example to be re-read on any compatible tape drive. The compatibility being determined by the Media Type (**Media Type**:sup:`Dir`:sub:`Storage`\  and
 **Media Type**:sup:`Sd`:sub:`Device`\ ). The same applies to disk storage. Since a volume that is written by a Device in say directory :file:`/home/bareos/backups` cannot be read by a Device with an **Archive Device**:sup:`Sd`:sub:`Device`\  = :file:`/home/bareos/client1`, you will not be able to restore all your files if you give both those devices **Media Type**:sup:`Sd`:sub:`Device`\  = File. During the restore, Bareos will
@@ -204,155 +204,155 @@ The |bareosDir| configuration is as follows:
 
 .. code-block:: sh
 
-   Director {
-     Name = bareos-dir
-     QueryFile = "/usr/lib/bareos/scripts/query.sql"
-     Password = "<secret>"
-   }
+    Director {
+      Name = bareos-dir
+      QueryFile = "/usr/lib/bareos/scripts/query.sql"
+      Password = "<secret>"
+    }
 
-   Schedule {
-     Name = "FourPerHour"
-     Run = Level=Full hourly at 0:05
-     Run = Level=Full hourly at 0:20
-     Run = Level=Full hourly at 0:35
-     Run = Level=Full hourly at 0:50
-   }
+    Schedule {
+      Name = "FourPerHour"
+      Run = Level=Full hourly at 0:05
+      Run = Level=Full hourly at 0:20
+      Run = Level=Full hourly at 0:35
+      Run = Level=Full hourly at 0:50
+    }
 
-   FileSet {
-     Name = "Example FileSet"
-     Include {
-       Options {
-         compression=GZIP
-         signature=SHA1
-       }
-       File = /etc
-     }
-   }
+    FileSet {
+      Name = "Example FileSet"
+      Include {
+        Options {
+          compression=GZIP
+          signature=SHA1
+        }
+        File = /etc
+      }
+    }
 
-   Job {
-     Name = "RecycleExample"
-     Type = Backup
-     Level = Full
-     Client = client1-fd
-     FileSet= "Example FileSet"
-     Messages = Standard
-     Storage = FileStorage
-     Pool = Recycle
-     Schedule = FourPerHour
-   }
+    Job {
+      Name = "RecycleExample"
+      Type = Backup
+      Level = Full
+      Client = client1-fd
+      FileSet= "Example FileSet"
+      Messages = Standard
+      Storage = FileStorage
+      Pool = Recycle
+      Schedule = FourPerHour
+    }
 
-   Job {
-     Name = "RecycleExample2"
-     Type = Backup
-     Level = Full
-     Client = client2-fd
-     FileSet= "Example FileSet"
-     Messages = Standard
-     Storage = FileStorage2
-     Pool = Recycle2
-     Schedule = FourPerHour
-   }
+    Job {
+      Name = "RecycleExample2"
+      Type = Backup
+      Level = Full
+      Client = client2-fd
+      FileSet= "Example FileSet"
+      Messages = Standard
+      Storage = FileStorage2
+      Pool = Recycle2
+      Schedule = FourPerHour
+    }
 
-   Client {
-     Name = client1-fd
-     Address = client1.example.com
-     Password = client1_password
-   }
+    Client {
+      Name = client1-fd
+      Address = client1.example.com
+      Password = client1_password
+    }
 
-   Client {
-     Name = client2-fd
-     Address = client2.example.com
-     Password = client2_password
-   }
+    Client {
+      Name = client2-fd
+      Address = client2.example.com
+      Password = client2_password
+    }
 
-   Storage {
-     Name = FileStorage
-     Address = bareos-sd.example.com
-     Password = local_storage_password
-     Device = RecycleDir
-     Media Type = File
-   }
+    Storage {
+      Name = FileStorage
+      Address = bareos-sd.example.com
+      Password = local_storage_password
+      Device = RecycleDir
+      Media Type = File
+    }
 
-   Storage {
-     Name = FileStorage2
-     Address = bareos-sd.example.com
-     Password = local_storage_password
-     Device = RecycleDir2
-     Media Type = File1
-   }
+    Storage {
+      Name = FileStorage2
+      Address = bareos-sd.example.com
+      Password = local_storage_password
+      Device = RecycleDir2
+      Media Type = File1
+    }
 
-   Catalog {
-     Name = MyCatalog
-     ...
-   }
+    Catalog {
+      Name = MyCatalog
+      ...
+    }
 
-   Messages {
-     Name = Standard
-     ...
-   }
+    Messages {
+      Name = Standard
+      ...
+    }
 
-   Pool {
-     Name = Recycle
-     Pool Type = Backup
-     Label Format = "Recycle-"
-     Auto Prune = yes
-     Use Volume Once = yes
-     Volume Retention = 2h
-     Maximum Volumes = 12
-     Recycle = yes
-   }
+    Pool {
+      Name = Recycle
+      Pool Type = Backup
+      Label Format = "Recycle-"
+      Auto Prune = yes
+      Use Volume Once = yes
+      Volume Retention = 2h
+      Maximum Volumes = 12
+      Recycle = yes
+    }
 
-   Pool {
-     Name = Recycle2
-     Pool Type = Backup
-     Label Format = "Recycle2-"
-     Auto Prune = yes
-     Use Volume Once = yes
-     Volume Retention = 2h
-     Maximum Volumes = 12
-     Recycle = yes
-   }
+    Pool {
+      Name = Recycle2
+      Pool Type = Backup
+      Label Format = "Recycle2-"
+      Auto Prune = yes
+      Use Volume Once = yes
+      Volume Retention = 2h
+      Maximum Volumes = 12
+      Recycle = yes
+    }
 
 and the |bareosSd| configuration is:
 
 .. code-block:: sh
 
-   Storage {
-     Name = bareos-sd
-     Maximum Concurrent Jobs = 10
-   }
+    Storage {
+      Name = bareos-sd
+      Maximum Concurrent Jobs = 10
+    }
 
-   Director {
-     Name = bareos-dir
-     Password = local_storage_password
-   }
+    Director {
+      Name = bareos-dir
+      Password = local_storage_password
+    }
 
-   Device {
-     Name = RecycleDir
-     Media Type = File
-     Archive Device = /home/bareos/backups
-     LabelMedia = yes;
-     Random Access = Yes;
-     AutomaticMount = yes;
-     RemovableMedia = no;
-     AlwaysOpen = no;
-   }
+    Device {
+      Name = RecycleDir
+      Media Type = File
+      Archive Device = /home/bareos/backups
+      LabelMedia = yes;
+      Random Access = Yes;
+      AutomaticMount = yes;
+      RemovableMedia = no;
+      AlwaysOpen = no;
+    }
 
-   Device {
-     Name = RecycleDir2
-     Media Type = File2
-     Archive Device = /home/bareos/backups2
-     LabelMedia = yes;
-     Random Access = Yes;
-     AutomaticMount = yes;
-     RemovableMedia = no;
-     AlwaysOpen = no;
-   }
+    Device {
+      Name = RecycleDir2
+      Media Type = File2
+      Archive Device = /home/bareos/backups2
+      LabelMedia = yes;
+      Random Access = Yes;
+      AutomaticMount = yes;
+      RemovableMedia = no;
+      AlwaysOpen = no;
+    }
 
-   Messages {
-     Name = Standard
-     director = bareos-dir = all
-   }
+    Messages {
+      Name = Standard
+      director = bareos-dir = all
+    }
 
 With a little bit of work, you can change the above example into a weekly or monthly cycle (take care about the amount of archive disk space used).
 
@@ -377,88 +377,88 @@ Example: use four storage devices pointing to the same directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: sh
-   :caption: |bareosDir| configuration: using 4 storage devices
+    :caption: |bareosDir| configuration: using 4 storage devices
 
-   Director {
-     Name = bareos-dir.example.com
-     QueryFile = "/usr/lib/bareos/scripts/query.sql"
-     Maximum Concurrent Jobs = 10
-     Password = "<secret>"
-   }
+    Director {
+      Name = bareos-dir.example.com
+      QueryFile = "/usr/lib/bareos/scripts/query.sql"
+      Maximum Concurrent Jobs = 10
+      Password = "<secret>"
+    }
 
-   Storage {
-     Name = File
-     Address = bareos-sd.bareos.com
-     Password = "<sd-secret>"
-     Device = FileStorage1
-     Device = FileStorage2
-     Device = FileStorage3
-     Device = FileStorage4
-     # number of devices = Maximum Concurrent Jobs
-     Maximum Concurrent Jobs = 4
-     Media Type = File
-   }
+    Storage {
+      Name = File
+      Address = bareos-sd.bareos.com
+      Password = "<sd-secret>"
+      Device = FileStorage1
+      Device = FileStorage2
+      Device = FileStorage3
+      Device = FileStorage4
+      # number of devices = Maximum Concurrent Jobs
+      Maximum Concurrent Jobs = 4
+      Media Type = File
+    }
 
-   [...]
+    [...]
 
 .. code-block:: sh
-   :caption: |bareosSd| configuraton: using 4 storage devices
+    :caption: |bareosSd| configuraton: using 4 storage devices
 
-   Storage {
-     Name = bareos-sd.example.com
-     # any number >= 4
-     Maximum Concurrent Jobs = 20
-   }
+    Storage {
+      Name = bareos-sd.example.com
+      # any number >= 4
+      Maximum Concurrent Jobs = 20
+    }
 
-   Director {
-     Name = bareos-dir.example.com
-     Password = "<sd-secret>"
-   }
+    Director {
+      Name = bareos-dir.example.com
+      Password = "<sd-secret>"
+    }
 
-   Device {
-     Name = FileStorage1
-     Media Type = File
-     Archive Device = /var/lib/bareos/storage
-     LabelMedia = yes
-     Random Access = yes
-     AutomaticMount = yes
-     RemovableMedia = no
-     AlwaysOpen = no
-     Maximum Concurrent Jobs = 1
-   }
+    Device {
+      Name = FileStorage1
+      Media Type = File
+      Archive Device = /var/lib/bareos/storage
+      LabelMedia = yes
+      Random Access = yes
+      AutomaticMount = yes
+      RemovableMedia = no
+      AlwaysOpen = no
+      Maximum Concurrent Jobs = 1
+    }
 
-   Device {
-     Name = FileStorage2
-     Media Type = File
-     Archive Device = /var/lib/bareos/storage
-     LabelMedia = yes
-     Random Access = yes
-     AutomaticMount = yes
-     RemovableMedia = no
-     AlwaysOpen = no
-     Maximum Concurrent Jobs = 1
-   }
+    Device {
+      Name = FileStorage2
+      Media Type = File
+      Archive Device = /var/lib/bareos/storage
+      LabelMedia = yes
+      Random Access = yes
+      AutomaticMount = yes
+      RemovableMedia = no
+      AlwaysOpen = no
+      Maximum Concurrent Jobs = 1
+    }
 
-   Device {
-     Name = FileStorage3
-     Media Type = File
-     Archive Device = /var/lib/bareos/storage
-     LabelMedia = yes
-     Random Access = yes
-     AutomaticMount = yes
-     RemovableMedia = no
-     AlwaysOpen = no
-     Maximum Concurrent Jobs = 1
-   }
+    Device {
+      Name = FileStorage3
+      Media Type = File
+      Archive Device = /var/lib/bareos/storage
+      LabelMedia = yes
+      Random Access = yes
+      AutomaticMount = yes
+      RemovableMedia = no
+      AlwaysOpen = no
+      Maximum Concurrent Jobs = 1
+    }
 
-   Device {
-     Name = FileStorage4
-     Media Type = File
-     Archive Device = /var/lib/bareos/storage
-     LabelMedia = yes
-     Random Access = yes
-     AutomaticMount = yes
-     RemovableMedia = no
-     AlwaysOpen = no
-     Maximum Concurrent Jobs = 1
-   }
+    Device {
+      Name = FileStorage4
+      Media Type = File
+      Archive Device = /var/lib/bareos/storage
+      LabelMedia = yes
+      Random Access = yes
+      AutomaticMount = yes
+      RemovableMedia = no
+      AlwaysOpen = no
+      Maximum Concurrent Jobs = 1
+    }

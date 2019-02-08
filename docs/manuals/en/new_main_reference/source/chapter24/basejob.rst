@@ -17,18 +17,18 @@ A new Job directive :strong:`Base=JobX,JobY,...` permits to specify the list of 
 
 ::
 
-   Job {
-      Name = BackupLinux
-      Level= Base
-      ...
-   }
+    Job {
+       Name = BackupLinux
+       Level= Base
+       ...
+    }
 
-   Job {
-      Name = BackupZog4
-      Base = BackupZog4, BackupLinux
-      Accurate = yes
-      ...
-   }
+    Job {
+       Name = BackupZog4
+       Base = BackupZog4, BackupLinux
+       Accurate = yes
+       ...
+    }
 
 In this example, the job ``BackupZog4`` will use the most recent version of all files contained in ``BackupZog4`` and ``BackupLinux`` jobs. Base jobs should have run with :strong:`Level=Base` to be used.
 
@@ -36,17 +36,17 @@ By default, Bareos will compare permissions bits, user and group fields, modific
 
 ::
 
-   FileSet {
-     Name = Full
-     Include = {
-       Options {
-          BaseJob  = pmugcs5
-          Accurate = mcs
-          Verify   = pin5
-       }
-       File = /
-     }
-   }
+    FileSet {
+      Name = Full
+      Include = {
+        Options {
+           BaseJob  = pmugcs5
+           Accurate = mcs
+           Verify   = pin5
+        }
+        File = /
+      }
+    }
 
 
 

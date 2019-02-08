@@ -41,16 +41,16 @@ To only allow Connection From the Client to the Director use:
 Using Client Initiated Connections has disadvantages. Without Client Initiated Connections the |bareosDir| only establishes a network connection when this is required. With Client Initiated Connections, the |bareosFd| connects to the |bareosDir| and the |bareosDir| keeps these connections open. The command :strong:`status dir` will show all waiting connections:
 
 .. code-block:: sh
-   :caption: show waiting client connections
+    :caption: show waiting client connections
 
-   *<input>status dir</input>
-   ...
-   Client Initiated Connections (waiting for jobs):
-   Connect time        Protocol            Authenticated       Name
-   ====================================================================================================
-   19-Apr-16 21:50     54                  1                   client1.example.com
-   ...
-   ====
+    *<input>status dir</input>
+    ...
+    Client Initiated Connections (waiting for jobs):
+    Connect time        Protocol            Authenticated       Name
+    ====================================================================================================
+    19-Apr-16 21:50     54                  1                   client1.example.com
+    ...
+    ====
 
 When both connection directions are allowed, the |bareosDir| 
 
@@ -71,10 +71,10 @@ To get feedback in case the |bareosFd| fails to connect to the |bareosDir|, cons
 to the default message resource **Standard**:sup:`Fd`:sub:`Messages` :
 
 .. code-block:: sh
-   :caption: bareos-fd.d/messages/Standard.conf
+    :caption: bareos-fd.d/messages/Standard.conf
 
-   Messages {
-     Name = Standard
-     Director = bareos-dir = all, !skipped, !restored
-     Append = "/var/log/bareos/bareos-fd.log" = all, !skipped, !restored
-   }
+    Messages {
+      Name = Standard
+      Director = bareos-dir = all, !skipped, !restored
+      Append = "/var/log/bareos/bareos-fd.log" = all, !skipped, !restored
+    }

@@ -46,7 +46,7 @@ The above three directives are all you need assuming that you fill each of your 
 
 Please see below and the :ref:`Basic Volume Management <DiskChapter>` chapter of this manual for complete examples.
 
-Automatic recycling of Volumes is performed by Bareos only when it wants a new Volume and no appendable Volumes are available in the Pool. It will then search the Pool for any Volumes with the Recycle flag set and the Volume Status is **Purged**. At that point, it will choose the oldest purged volume and recycle it.
+Automatic recycling of Volumes is performed by Bareos only when it wants a new Volume and no appendable Volumes are available in the Pool. It will then search the Pool for any Volumes with the **Recycle** flag set and the Volume Status is **Purged**. At that point, it will choose the oldest purged volume and recycle it.
 
 If there are no volumes with status **Purged**, then the recycling occurs in two steps:
 
@@ -58,8 +58,8 @@ Only Volumes marked **Full** or **Used** will be considerd for pruning. The Volu
 
 Until recycling actually occurs, the Volume data remains intact. If no Volumes can be found for recycling for any of the reasons stated above, Bareos will request operator intervention (i.e. it will ask you to label a new volume).
 
-A key point mentioned above, that can be a source of frustration, is that Bareos will only recycle purged Volumes if there is no other appendable Volume available. Otherwise, it will always write to an appendable Volume before recycling even if there are Volume marked as Purged. This preserves your data as long as possible. So, if you wish to :emphasis:`force` Bareos to use a purged Volume, you must first ensure that no other Volume in the Pool is marked Append. If necessary, you can
-manually set a volume to Full. The reason for this is that Bareos wants to preserve the data on your old tapes (even though purged from the catalog) as long as absolutely possible before overwriting it. There are also a number of directives such as Volume Use Duration = **** that will automatically mark a volume as **Used** and thus no longer appendable.
+A key point mentioned above, that can be a source of frustration, is that Bareos will only recycle purged Volumes if there is no other appendable Volume available. Otherwise, it will always write to an appendable Volume before recycling even if there are Volume marked as Purged. This preserves your data as long as possible. So, if you wish to :emphasis:`force` Bareos to use a purged Volume, you must first ensure that no other Volume in the Pool is marked **Append**. If necessary, you
+can manually set a volume to **Full**. The reason for this is that Bareos wants to preserve the data on your old tapes (even though purged from the catalog) as long as absolutely possible before overwriting it. There are also a number of directives such as Volume Use Duration = **** that will automatically mark a volume as **Used** and thus no longer appendable.
 
 .. _AutoPruning:
 
@@ -221,50 +221,50 @@ Recycle Status
 
 :index:`[TAG=Recycle Status] <single: Recycle Status>`
 
-Each Volume inherits the Recycle status (yes or no) from the Pool resource record when the Media record is created (normally when the Volume is labeled). This Recycle status is stored in the Media record of the Catalog. Using the Console program, you may subsequently change the Recycle status for each Volume. For example in the following output from list volumes:
+Each Volume inherits the Recycle status (yes or no) from the Pool resource record when the Media record is created (normally when the Volume is labeled). This Recycle status is stored in the Media record of the Catalog. Using the Console program, you may subsequently change the Recycle status for each Volume. For example in the following output from **list volumes**:
 
 
 
 ::
 
-   +----------+-------+--------+---------+------------+--------+-----+
-   | VolumeNa | Media | VolSta | VolByte | LastWritte | VolRet | Rec |
-   +----------+-------+--------+---------+------------+--------+-----+
-   | File0001 | File  | Full   | 4190055 | 2002-05-25 | 14400  | 1   |
-   | File0002 | File  | Full   | 1896460 | 2002-05-26 | 14400  | 1   |
-   | File0003 | File  | Full   | 1896460 | 2002-05-26 | 14400  | 1   |
-   | File0004 | File  | Full   | 1896460 | 2002-05-26 | 14400  | 1   |
-   | File0005 | File  | Full   | 1896460 | 2002-05-26 | 14400  | 1   |
-   | File0006 | File  | Full   | 1896460 | 2002-05-26 | 14400  | 1   |
-   | File0007 | File  | Purged | 1896466 | 2002-05-26 | 14400  | 1   |
-   +----------+-------+--------+---------+------------+--------+-----+
+    +----------+-------+--------+---------+------------+--------+-----+
+    | VolumeNa | Media | VolSta | VolByte | LastWritte | VolRet | Rec |
+    +----------+-------+--------+---------+------------+--------+-----+
+    | File0001 | File  | Full   | 4190055 | 2002-05-25 | 14400  | 1   |
+    | File0002 | File  | Full   | 1896460 | 2002-05-26 | 14400  | 1   |
+    | File0003 | File  | Full   | 1896460 | 2002-05-26 | 14400  | 1   |
+    | File0004 | File  | Full   | 1896460 | 2002-05-26 | 14400  | 1   |
+    | File0005 | File  | Full   | 1896460 | 2002-05-26 | 14400  | 1   |
+    | File0006 | File  | Full   | 1896460 | 2002-05-26 | 14400  | 1   |
+    | File0007 | File  | Purged | 1896466 | 2002-05-26 | 14400  | 1   |
+    +----------+-------+--------+---------+------------+--------+-----+
 
 
 
-all the volumes are marked as recyclable, and the last Volume, File0007 has been purged, so it may be immediately recycled. The other volumes are all marked recyclable and when their Volume Retention period (14400 seconds or four hours) expires, they will be eligible for pruning, and possibly recycling. Even though Volume File0007 has been purged, all the data on the Volume is still recoverable. A purged Volume simply means that there are no entries in the Catalog. Even if the Volume Status is
-changed to Recycle, the data on the Volume will be recoverable. The data is lost only when the Volume is re-labeled and re-written.
+all the volumes are marked as recyclable, and the last Volume, **File0007** has been purged, so it may be immediately recycled. The other volumes are all marked recyclable and when their Volume Retention period (14400 seconds or four hours) expires, they will be eligible for pruning, and possibly recycling. Even though Volume **File0007** has been purged, all the data on the Volume is still recoverable. A purged Volume simply means that there are no entries in the Catalog. Even if the Volume
+Status is changed to **Recycle**, the data on the Volume will be recoverable. The data is lost only when the Volume is re-labeled and re-written.
 
-To modify Volume File0001 so that it cannot be recycled, you use the update volume pool=File command in the console program, or simply update and Bareos will prompt you for the information.
+To modify Volume **File0001** so that it cannot be recycled, you use the **update volume pool=File** command in the console program, or simply **update** and Bareos will prompt you for the information.
 
 
 
 ::
 
-   +----------+------+-------+---------+-------------+-------+-----+
-   | VolumeNa | Media| VolSta| VolByte | LastWritten | VolRet| Rec |
-   +----------+------+-------+---------+-------------+-------+-----+
-   | File0001 | File | Full  | 4190055 | 2002-05-25  | 14400 | 0   |
-   | File0002 | File | Full  | 1897236 | 2002-05-26  | 14400 | 1   |
-   | File0003 | File | Full  | 1896460 | 2002-05-26  | 14400 | 1   |
-   | File0004 | File | Full  | 1896460 | 2002-05-26  | 14400 | 1   |
-   | File0005 | File | Full  | 1896460 | 2002-05-26  | 14400 | 1   |
-   | File0006 | File | Full  | 1896460 | 2002-05-26  | 14400 | 1   |
-   | File0007 | File | Purged| 1896466 | 2002-05-26  | 14400 | 1   |
-   +----------+------+-------+---------+-------------+-------+-----+
+    +----------+------+-------+---------+-------------+-------+-----+
+    | VolumeNa | Media| VolSta| VolByte | LastWritten | VolRet| Rec |
+    +----------+------+-------+---------+-------------+-------+-----+
+    | File0001 | File | Full  | 4190055 | 2002-05-25  | 14400 | 0   |
+    | File0002 | File | Full  | 1897236 | 2002-05-26  | 14400 | 1   |
+    | File0003 | File | Full  | 1896460 | 2002-05-26  | 14400 | 1   |
+    | File0004 | File | Full  | 1896460 | 2002-05-26  | 14400 | 1   |
+    | File0005 | File | Full  | 1896460 | 2002-05-26  | 14400 | 1   |
+    | File0006 | File | Full  | 1896460 | 2002-05-26  | 14400 | 1   |
+    | File0007 | File | Purged| 1896466 | 2002-05-26  | 14400 | 1   |
+    +----------+------+-------+---------+-------------+-------+-----+
 
 
 
-In this case, File0001 will never be automatically recycled. The same effect can be achieved by setting the Volume Status to Read-Only.
+In this case, **File0001** will never be automatically recycled. The same effect can be achieved by setting the Volume Status to Read-Only.
 
 As you have noted, the Volume Status (VolStatus) column in the catalog database contains the current status of the Volume, which is normally maintained automatically by Bareos. To give you an idea of some of the values it can take during the life cycle of a Volume, here is a picture created by Arno Lehmann:
 
@@ -272,17 +272,17 @@ As you have noted, the Volume Status (VolStatus) column in the catalog database 
 
 ::
 
-   A typical volume life cycle is like this:
+    A typical volume life cycle is like this:
 
-                 because job count or size limit exceeded
-         Append  -------------------------------------->  Used/Full
-           ^                                                  |
-           | First Job writes to        Retention time passed |
-           | the volume                   and recycling takes |
-           |                                            place |
-           |                                                  v
-         Recycled <-------------------------------------- Purged
-                        Volume is selected for reuse
+                  because job count or size limit exceeded
+          Append  -------------------------------------->  Used/Full
+            ^                                                  |
+            | First Job writes to        Retention time passed |
+            | the volume                   and recycling takes |
+            |                                            place |
+            |                                                  v
+          Recycled <-------------------------------------- Purged
+                         Volume is selected for reuse
 
 
 
@@ -309,8 +309,8 @@ We start with the following assumptions:
 
 -  Incremental backups are done Monday - Friday (actually Tue-Fri mornings).
 
-We start the system by doing a Full save to one of the weekly volumes or one of the monthly volumes. The next morning, we remove the tape and insert a Daily tape. Friday evening, we remove the Daily tape and insert the next tape in the Weekly series. Monday, we remove the Weekly tape and re-insert the Daily tape. On the first Friday of the next month, we insert the next Monthly tape in the series rather than a Weekly tape, then continue. When a Daily tape finally fills up, Bareos will request
-the next one in the series, and the next day when you notice the email message, you will mount it and Bareos will finish the unfinished incremental backup.
+We start the system by doing a Full save to one of the weekly volumes or one of the monthly volumes. The next morning, we remove the tape and insert a Daily tape. Friday evening, we remove the Daily tape and insert the next tape in the Weekly series. Monday, we remove the Weekly tape and re-insert the Daily tape. On the first Friday of the next month, we insert the next Monthly tape in the series rather than a Weekly tape, then continue. When a Daily tape finally fills up, **Bareos** will
+request the next one in the series, and the next day when you notice the email message, you will mount it and **Bareos** will finish the unfinished incremental backup.
 
 What does this give? Well, at any point, you will have the last complete Full save plus several Incremental saves. For any given file you want to recover (or your whole system), you will have a copy of that file every day for at least the last 14 days. For older versions, you will have at least three and probably four Friday full saves of that file, and going back further, you will have a copy of that file made on the beginning of the month for at least a year.
 
@@ -322,66 +322,66 @@ What would the Bareos configuration look like to implement such a scheme?
 
 ::
 
-   Schedule {
-     Name = "NightlySave"
-     Run = Level=Full Pool=Monthly 1st sat at 03:05
-     Run = Level=Full Pool=Weekly 2nd-5th sat at 03:05
-     Run = Level=Incremental Pool=Daily tue-fri at 03:05
-   }
-   Job {
-     Name = "NightlySave"
-     Type = Backup
-     Level = Full
-     Client = LocalMachine
-     FileSet = "File Set"
-     Messages = Standard
-     Storage = DDS-4
-     Pool = Daily
-     Schedule = "NightlySave"
-   }
-   # Definition of file storage device
-   Storage {
-     Name = DDS-4
-     Address = localhost
-     SDPort = 9103
-     Password = XXXXXXXXXXXXX
-     Device = FileStorage
-     Media Type = 8mm
-   }
-   FileSet {
-     Name = "File Set"
-     Include {
-       Options {
-         signature=MD5
-       }
-       File = fffffffffffffffff
-     }
-     Exclude  { File=*.o }
-   }
-   Pool {
-     Name = Daily
-     Pool Type = Backup
-     AutoPrune = yes
-     VolumeRetention = 10d   # recycle in 10 days
-     Maximum Volumes = 10
-     Recycle = yes
-   }
-   Pool {
-     Name = Weekly
-     Use Volume Once = yes
-     Pool Type = Backup
-     AutoPrune = yes
-     VolumeRetention = 30d  # recycle in 30 days (default)
-     Recycle = yes
-   }
-   Pool {
-     Name = Monthly
-     Use Volume Once = yes
-     Pool Type = Backup
-     AutoPrune = yes
-     VolumeRetention = 365d  # recycle in 1 year
-     Recycle = yes
-   }
+    Schedule {
+      Name = "NightlySave"
+      Run = Level=Full Pool=Monthly 1st sat at 03:05
+      Run = Level=Full Pool=Weekly 2nd-5th sat at 03:05
+      Run = Level=Incremental Pool=Daily tue-fri at 03:05
+    }
+    Job {
+      Name = "NightlySave"
+      Type = Backup
+      Level = Full
+      Client = LocalMachine
+      FileSet = "File Set"
+      Messages = Standard
+      Storage = DDS-4
+      Pool = Daily
+      Schedule = "NightlySave"
+    }
+    # Definition of file storage device
+    Storage {
+      Name = DDS-4
+      Address = localhost
+      SDPort = 9103
+      Password = XXXXXXXXXXXXX
+      Device = FileStorage
+      Media Type = 8mm
+    }
+    FileSet {
+      Name = "File Set"
+      Include {
+        Options {
+          signature=MD5
+        }
+        File = fffffffffffffffff
+      }
+      Exclude  { File=*.o }
+    }
+    Pool {
+      Name = Daily
+      Pool Type = Backup
+      AutoPrune = yes
+      VolumeRetention = 10d   # recycle in 10 days
+      Maximum Volumes = 10
+      Recycle = yes
+    }
+    Pool {
+      Name = Weekly
+      Use Volume Once = yes
+      Pool Type = Backup
+      AutoPrune = yes
+      VolumeRetention = 30d  # recycle in 30 days (default)
+      Recycle = yes
+    }
+    Pool {
+      Name = Monthly
+      Use Volume Once = yes
+      Pool Type = Backup
+      AutoPrune = yes
+      VolumeRetention = 365d  # recycle in 1 year
+      Recycle = yes
+    }
 
 
 
@@ -398,57 +398,57 @@ Perhaps the best way to understand the various resource records that come into p
 
 ::
 
-   Schedule {
-     Name = "30 minute cycle"
-     Run = Level=Full Pool=File Messages=Standard Storage=File
-            hourly at 0:05
-     Run = Level=Full Pool=File Messages=Standard Storage=File
-            hourly at 0:35
-   }
-   Job {
-     Name = "Filetest"
-     Type = Backup
-     Level = Full
-     Client=XXXXXXXXXX
-     FileSet="Test Files"
-     Messages = Standard
-     Storage = File
-     Pool = File
-     Schedule = "30 minute cycle"
-   }
-   # Definition of file storage device
-   Storage {
-     Name = File
-     Address = XXXXXXXXXXX
-     SDPort = 9103
-     Password = XXXXXXXXXXXXX
-     Device = FileStorage
-     Media Type = File
-   }
-   FileSet {
-     Name = "File Set"
-     Include {
-       Options {
-         signature=MD5
-       }
-       File = fffffffffffffffff
-     }
-     Exclude  { File=*.o }
-   }
-   Pool {
-     Name = File
-     Use Volume Once = yes
-     Pool Type = Backup
-     LabelFormat = "File"
-     AutoPrune = yes
-     VolumeRetention = 4h
-     Maximum Volumes = 12
-     Recycle = yes
-   }
+    Schedule {
+      Name = "30 minute cycle"
+      Run = Level=Full Pool=File Messages=Standard Storage=File
+             hourly at 0:05
+      Run = Level=Full Pool=File Messages=Standard Storage=File
+             hourly at 0:35
+    }
+    Job {
+      Name = "Filetest"
+      Type = Backup
+      Level = Full
+      Client=XXXXXXXXXX
+      FileSet="Test Files"
+      Messages = Standard
+      Storage = File
+      Pool = File
+      Schedule = "30 minute cycle"
+    }
+    # Definition of file storage device
+    Storage {
+      Name = File
+      Address = XXXXXXXXXXX
+      SDPort = 9103
+      Password = XXXXXXXXXXXXX
+      Device = FileStorage
+      Media Type = File
+    }
+    FileSet {
+      Name = "File Set"
+      Include {
+        Options {
+          signature=MD5
+        }
+        File = fffffffffffffffff
+      }
+      Exclude  { File=*.o }
+    }
+    Pool {
+      Name = File
+      Use Volume Once = yes
+      Pool Type = Backup
+      LabelFormat = "File"
+      AutoPrune = yes
+      VolumeRetention = 4h
+      Maximum Volumes = 12
+      Recycle = yes
+    }
 
 
 
-Where you will need to replace the ffffffffff’s by the appropriate files to be saved for your configuration. For the FileSet Include, choose a directory that has one or two megabytes maximum since there will probably be approximately eight copies of the directory that Bareos will cycle through.
+Where you will need to replace the **ffffffffff**\ ’s by the appropriate files to be saved for your configuration. For the FileSet Include, choose a directory that has one or two megabytes maximum since there will probably be approximately eight copies of the directory that **Bareos** will cycle through.
 
 In addition, you will need to add the following to your Storage daemon’s configuration file:
 
@@ -456,22 +456,22 @@ In addition, you will need to add the following to your Storage daemon’s confi
 
 ::
 
-   Device {
-     Name = FileStorage
-     Media Type = File
-     Archive Device = /tmp
-     LabelMedia = yes;
-     Random Access = Yes;
-     AutomaticMount = yes;
-     RemovableMedia = no;
-     AlwaysOpen = no;
-   }
+    Device {
+      Name = FileStorage
+      Media Type = File
+      Archive Device = /tmp
+      LabelMedia = yes;
+      Random Access = Yes;
+      AutomaticMount = yes;
+      RemovableMedia = no;
+      AlwaysOpen = no;
+    }
 
 
 
 With the above resources, Bareos will start a Job every half hour that saves a copy of the directory you chose to /tmp/File0001 ... /tmp/File0012. After 4 hours, Bareos will start recycling the backup Volumes (/tmp/File0001 ...). You should see this happening in the output produced. Bareos will automatically create the Volumes (Files) the first time it uses them.
 
-To turn it off, either delete all the resources you’ve added, or simply comment out the Schedule record in the Job resource.
+To turn it off, either delete all the resources you’ve added, or simply comment out the **Schedule** record in the **Job** resource.
 
 .. _manualrecycling:
 

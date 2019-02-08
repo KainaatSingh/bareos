@@ -22,7 +22,7 @@ class Limitation(Directive):
         self.assert_has_content()
         
         title = 'Limitation: ' + self.arguments[0]
-        text  = '\n'.join(self.content)
+        #text  = '\n'.join(self.content)
 
         paragraph = nodes.paragraph()
         self.state.nested_parse(self.content, self.content_offset, paragraph)
@@ -31,7 +31,9 @@ class Limitation(Directive):
         result += nodes.title(text=title)
         #result += nodes.paragraph(text=text)
         result += paragraph
+
         return [result]
 
 def setup(app):
     directives.register_directive("limitation", Limitation)
+

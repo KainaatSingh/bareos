@@ -34,21 +34,24 @@ bareos-17.2.7
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2018-07-13\\
-   Database Version  & 2171 (unchanged)\\
-   Release Ticket    & :issue:`966`\\
-   Url               & `<http://download.bareos.com/bareos/release/17.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2018-07-13\\
+    Database Version  & 2171 (unchanged)\\
+    Release Ticket    & :issue:`966`\\
+    Url               & `<http://download.bareos.com/bareos/release/17.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2018-07-13
-Database Version 2171 (unchanged)
-Release Ticket   :issue:`966`
-Url              `<http://download.bareos.com/bareos/release/17.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2018-07-13                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2171 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`966`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/17.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes and enhancements. Excerpt:
 
@@ -71,21 +74,24 @@ bareos-17.2.6
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2018-06-21\\
-   Database Version  & 2171 (unchanged)\\
-   Release Ticket    & :issue:`916`\\
-   Url               & `<http://download.bareos.com/bareos/release/17.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2018-06-21\\
+    Database Version  & 2171 (unchanged)\\
+    Release Ticket    & :issue:`916`\\
+    Url               & `<http://download.bareos.com/bareos/release/17.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2018-06-21
-Database Version 2171 (unchanged)
-Release Ticket   :issue:`916`
-Url              `<http://download.bareos.com/bareos/release/17.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2018-06-21                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2171 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`916`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/17.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes and enhancements. Excerpt:
 
@@ -118,21 +124,24 @@ bareos-17.2.5
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2018-02-16\\
-   Database Version  & 2171 (unchanged)\\
-   Release Ticket    & :issue:`910`\\
-   Url               & `<http://download.bareos.com/bareos/release/17.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2018-02-16\\
+    Database Version  & 2171 (unchanged)\\
+    Release Ticket    & :issue:`910`\\
+    Url               & `<http://download.bareos.com/bareos/release/17.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2018-02-16
-Database Version 2171 (unchanged)
-Release Ticket   :issue:`910`
-Url              `<http://download.bareos.com/bareos/release/17.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2018-02-16                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2171 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`910`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/17.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes and enhancements. Excerpt:
 
@@ -175,23 +184,27 @@ bareos-17.2.4
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2017-12-14\\
-   Database Version  & 2171\\
-   Release Ticket    & :issue:`861`\\
-   Url               & `<http://download.bareos.org/bareos/release/17.2/>`_ \\
-                     & `<http://download.bareos.com/bareos/release/17.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2017-12-14\\
+    Database Version  & 2171\\
+    Release Ticket    & :issue:`861`\\
+    Url               & `<http://download.bareos.org/bareos/release/17.2/>`_ \\
+                      & `<http://download.bareos.com/bareos/release/17.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2017-12-14
-Database Version 2171
-Release Ticket   :issue:`861`
-Url              `<http://download.bareos.org/bareos/release/17.2/>`_
-\                `<http://download.bareos.com/bareos/release/17.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2017-12-14                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2171                                            |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`861`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.org/bareos/release/17.2/>`_ |
++------------------+-------------------------------------------------+
+|                  | `<http://download.bareos.com/bareos/release/17.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several enhancements. Excerpt:
 
@@ -265,21 +278,24 @@ bareos-16.2.8
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2018-07-06\\
-   Database Version  & 2004 (unchanged)\\
-   Release Ticket    & :issue:`863`\\
-   Url               & `<http://download.bareos.com/bareos/release/16.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2018-07-06\\
+    Database Version  & 2004 (unchanged)\\
+    Release Ticket    & :issue:`863`\\
+    Url               & `<http://download.bareos.com/bareos/release/16.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2018-07-06
-Database Version 2004 (unchanged)
-Release Ticket   :issue:`863`
-Url              `<http://download.bareos.com/bareos/release/16.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2018-07-06                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2004 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`863`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/16.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes and enhancements. Excerpt:
 
@@ -312,21 +328,24 @@ bareos-16.2.7
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2017-10-09\\
-   Database Version  & 2004 (unchanged)\\
-   Release Ticket    & :issue:`836`\\
-   Url               & `<http://download.bareos.com/bareos/release/16.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2017-10-09\\
+    Database Version  & 2004 (unchanged)\\
+    Release Ticket    & :issue:`836`\\
+    Url               & `<http://download.bareos.com/bareos/release/16.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2017-10-09
-Database Version 2004 (unchanged)
-Release Ticket   :issue:`836`
-Url              `<http://download.bareos.com/bareos/release/16.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2017-10-09                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2004 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`836`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/16.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes and enhancements. Excerpt:
 
@@ -375,21 +394,24 @@ bareos-16.2.6
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2017-06-22\\
-   Database Version  & 2004 (unchanged)\\
-   Release Ticket    & :issue:`794`\\
-   Url               & `<http://download.bareos.com/bareos/release/16.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2017-06-22\\
+    Database Version  & 2004 (unchanged)\\
+    Release Ticket    & :issue:`794`\\
+    Url               & `<http://download.bareos.com/bareos/release/16.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2017-06-22
-Database Version 2004 (unchanged)
-Release Ticket   :issue:`794`
-Url              `<http://download.bareos.com/bareos/release/16.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2017-06-22                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2004 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`794`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/16.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes and enhancements. Excerpt:
 
@@ -457,21 +479,24 @@ bareos-16.2.5
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2017-03-03\\
-   Database Version  & 2004 (unchanged)\\
-   Release Ticket    & :issue:`734`\\
-   Url               & `<http://download.bareos.com/bareos/release/16.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2017-03-03\\
+    Database Version  & 2004 (unchanged)\\
+    Release Ticket    & :issue:`734`\\
+    Url               & `<http://download.bareos.com/bareos/release/16.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2017-03-03
-Database Version 2004 (unchanged)
-Release Ticket   :issue:`734`
-Url              `<http://download.bareos.com/bareos/release/16.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2017-03-03                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2004 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`734`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/16.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes and enhancements. Excerpt:
 
@@ -494,23 +519,27 @@ bareos-16.2.4
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2016-10-28\\
-   Database Version  & 2004 (unchanged)\\
-   Release Ticket    & :issue:`698`\\
-   Url               & `<http://download.bareos.org/bareos/release/16.2/>`_ \\
-                     & `<http://download.bareos.com/bareos/release/16.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2016-10-28\\
+    Database Version  & 2004 (unchanged)\\
+    Release Ticket    & :issue:`698`\\
+    Url               & `<http://download.bareos.org/bareos/release/16.2/>`_ \\
+                      & `<http://download.bareos.com/bareos/release/16.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2016-10-28
-Database Version 2004 (unchanged)
-Release Ticket   :issue:`698`
-Url              `<http://download.bareos.org/bareos/release/16.2/>`_
-\                `<http://download.bareos.com/bareos/release/16.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2016-10-28                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2004 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`698`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.org/bareos/release/16.2/>`_ |
++------------------+-------------------------------------------------+
+|                  | `<http://download.bareos.com/bareos/release/16.2/>`_ |
++------------------+-------------------------------------------------+
 
 First stable release of the Bareos 16.2 branch.
 
@@ -560,21 +589,24 @@ bareos-15.2.4
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2016-06-10\\
-   Database Version  & 2004 (unchanged)\\
-   Release Ticket    & :issue:`641` \\
-   Url               & `<http://download.bareos.com/bareos/release/15.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2016-06-10\\
+    Database Version  & 2004 (unchanged)\\
+    Release Ticket    & :issue:`641` \\
+    Url               & `<http://download.bareos.com/bareos/release/15.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2016-06-10
-Database Version 2004 (unchanged)
-Release Ticket   :issue:`641`
-Url              `<http://download.bareos.com/bareos/release/15.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2016-06-10                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2004 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`641`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/15.2/>`_ |
++------------------+-------------------------------------------------+
 
 For upgrading from 14.2, please see release notes for 15.2.1.
 
@@ -597,21 +629,24 @@ bareos-15.2.3
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2016-03-11\\
-   Database Version  & 2004 (unchanged)\\
-   Release Ticket    & :issue:`625` \\
-   Url               & `<http://download.bareos.com/bareos/release/15.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2016-03-11\\
+    Database Version  & 2004 (unchanged)\\
+    Release Ticket    & :issue:`625` \\
+    Url               & `<http://download.bareos.com/bareos/release/15.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2016-03-11
-Database Version 2004 (unchanged)
-Release Ticket   :issue:`625`
-Url              `<http://download.bareos.com/bareos/release/15.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2016-03-11                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2004 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`625`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/15.2/>`_ |
++------------------+-------------------------------------------------+
 
 For upgrading from 14.2, please see releasenotes for 15.2.1.
 
@@ -642,25 +677,30 @@ bareos-15.2.2
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2015-11-19\\
-   Database Version  & 2004\\
-                     & Database update required (if coming from bareos-14.2). See the :ref:`bareos-update` section.\\
-   Release Ticket    & :issue:`554` \\
-   Url               & `<http://download.bareos.org/bareos/release/15.2/>`_ \\
-                     & `<http://download.bareos.com/bareos/release/15.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2015-11-19\\
+    Database Version  & 2004\\
+                      & Database update required (if coming from bareos-14.2). See the :ref:`bareos-update` section.\\
+    Release Ticket    & :issue:`554` \\
+    Url               & `<http://download.bareos.org/bareos/release/15.2/>`_ \\
+                      & `<http://download.bareos.com/bareos/release/15.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ============================================================================================================
-Code Release     2015-11-19
-Database Version 2004
-\                Database update required (if coming from bareos-14.2). See the :ref:`bareos-update` section.
-Release Ticket   :issue:`554`
-Url              `<http://download.bareos.org/bareos/release/15.2/>`_
-\                `<http://download.bareos.com/bareos/release/15.2/>`_
-================ ============================================================================================================
++------------------+--------------------------------------------------------------------------------------------------------------+
+| Code Release     | 2015-11-19                                                                                                   |
++------------------+--------------------------------------------------------------------------------------------------------------+
+| Database Version | 2004                                                                                                         |
++------------------+--------------------------------------------------------------------------------------------------------------+
+|                  | Database update required (if coming from bareos-14.2). See the :ref:`bareos-update` section. |
++------------------+--------------------------------------------------------------------------------------------------------------+
+| Release Ticket   | :issue:`554`                                                                                    |
++------------------+--------------------------------------------------------------------------------------------------------------+
+| Url              | `<http://download.bareos.org/bareos/release/15.2/>`_                                                              |
++------------------+--------------------------------------------------------------------------------------------------------------+
+|                  | `<http://download.bareos.com/bareos/release/15.2/>`_                                                              |
++------------------+--------------------------------------------------------------------------------------------------------------+
 
 First stable release of the Bareos 15.2 branch.
 
@@ -677,23 +717,27 @@ When coming from bareos-14.2.x, the following things have changed (same as in ba
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2015-09-16\\
-   Database Version  & 2004\\
-                     & Database update required, see the :ref:`bareos-update` section.\\
-   Release Ticket    & :issue:`501` \\
-   Url               & `<http://download.bareos.org/bareos/release/15.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2015-09-16\\
+    Database Version  & 2004\\
+                      & Database update required, see the :ref:`bareos-update` section.\\
+    Release Ticket    & :issue:`501` \\
+    Url               & `<http://download.bareos.org/bareos/release/15.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================================================
-Code Release     2015-09-16
-Database Version 2004
-\                Database update required, see the :ref:`bareos-update` section.
-Release Ticket   :issue:`501`
-Url              `<http://download.bareos.org/bareos/release/15.2/>`_
-================ ===============================================================================
++------------------+---------------------------------------------------------------------------------+
+| Code Release     | 2015-09-16                                                                      |
++------------------+---------------------------------------------------------------------------------+
+| Database Version | 2004                                                                            |
++------------------+---------------------------------------------------------------------------------+
+|                  | Database update required, see the :ref:`bareos-update` section. |
++------------------+---------------------------------------------------------------------------------+
+| Release Ticket   | :issue:`501`                                                       |
++------------------+---------------------------------------------------------------------------------+
+| Url              | `<http://download.bareos.org/bareos/release/15.2/>`_                                 |
++------------------+---------------------------------------------------------------------------------+
 
 Beta release.
 
@@ -715,21 +759,24 @@ bareos-14.2.7
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2016-07-11\\
-   Database Version  & 2003 (unchanged)\\
-   Release Ticket    & :issue:`584` \\
-   Url               & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2016-07-11\\
+    Database Version  & 2003 (unchanged)\\
+    Release Ticket    & :issue:`584` \\
+    Url               & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2016-07-11
-Database Version 2003 (unchanged)
-Release Ticket   :issue:`584`
-Url              `<http://download.bareos.com/bareos/release/14.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2016-07-11                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2003 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`584`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/14.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes. Excerpt:
 
@@ -786,21 +833,24 @@ bareos-14.2.6
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2015-12-03\\
-   Database Version  & 2003 (unchanged)\\
-   Release Ticket    & :issue:`474` \\
-   Url               & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2015-12-03\\
+    Database Version  & 2003 (unchanged)\\
+    Release Ticket    & :issue:`474` \\
+    Url               & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2015-12-03
-Database Version 2003 (unchanged)
-Release Ticket   :issue:`474`
-Url              `<http://download.bareos.com/bareos/release/14.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2015-12-03                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2003 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`474`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/14.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes.
 
@@ -813,21 +863,24 @@ bareos-14.2.5
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2015-06-01\\
-   Database Version  & 2003 (unchanged)\\
-   Release Ticket    & :issue:`447` \\
-   Url               & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2015-06-01\\
+    Database Version  & 2003 (unchanged)\\
+    Release Ticket    & :issue:`447` \\
+    Url               & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2015-06-01
-Database Version 2003 (unchanged)
-Release Ticket   :issue:`447`
-Url              `<http://download.bareos.com/bareos/release/14.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2015-06-01                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2003 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`447`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/14.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes and added the platforms :strong:`Debian 8` and :strong:`Fedora 21`.
 
@@ -840,21 +893,24 @@ bareos-14.2.4
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2015-03-23 \\
-   Database Version  & 2003 (unchanged)\\
-   Release Ticket    & :issue:`420` \\
-   Url               & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2015-03-23 \\
+    Database Version  & 2003 (unchanged)\\
+    Release Ticket    & :issue:`420` \\
+    Url               & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2015-03-23
-Database Version 2003 (unchanged)
-Release Ticket   :issue:`420`
-Url              `<http://download.bareos.com/bareos/release/14.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2015-03-23                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2003 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`420`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/14.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes, including one major bugfix (:issue:`437`), relevant for those of you using backup to disk with autolabeling enabled.
 
@@ -885,21 +941,24 @@ bareos-14.2.3
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2015-02-02 \\
-   Database Version  & 2003 (unchanged)\\
-   Release Ticket    & :issue:`393`\\
-   Url               & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2015-02-02 \\
+    Database Version  & 2003 (unchanged)\\
+    Release Ticket    & :issue:`393`\\
+    Url               & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2015-02-02
-Database Version 2003 (unchanged)
-Release Ticket   :issue:`393`
-Url              `<http://download.bareos.com/bareos/release/14.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2015-02-02                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2003 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Release Ticket   | :issue:`393`                       |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/14.2/>`_ |
++------------------+-------------------------------------------------+
 
 bareos-14.2.2
 -------------
@@ -910,25 +969,30 @@ bareos-14.2.2
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2014-12-12 \\
-   Database Version  & 2003 (unchanged)\\
-                     & Database update required if updating from version < 14.2.\\
-                     & See the :ref:`bareos-update` section for details.\\
-   Url               & `<http://download.bareos.org/bareos/release/14.2/>`_ \\
-                     & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2014-12-12 \\
+    Database Version  & 2003 (unchanged)\\
+                      & Database update required if updating from version < 14.2.\\
+                      & See the :ref:`bareos-update` section for details.\\
+    Url               & `<http://download.bareos.org/bareos/release/14.2/>`_ \\
+                      & `<http://download.bareos.com/bareos/release/14.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ =================================================================
-Code Release     2014-12-12
-Database Version 2003 (unchanged)
-\                Database update required if updating from version < 14.2.
-\                See the :ref:`bareos-update` section for details.
-Url              `<http://download.bareos.org/bareos/release/14.2/>`_
-\                `<http://download.bareos.com/bareos/release/14.2/>`_
-================ =================================================================
++------------------+-------------------------------------------------------------------+
+| Code Release     | 2014-12-12                                                        |
++------------------+-------------------------------------------------------------------+
+| Database Version | 2003 (unchanged)                                                  |
++------------------+-------------------------------------------------------------------+
+|                  | Database update required if updating from version < 14.2.         |
++------------------+-------------------------------------------------------------------+
+|                  | See the :ref:`bareos-update` section for details. |
++------------------+-------------------------------------------------------------------+
+| Url              | `<http://download.bareos.org/bareos/release/14.2/>`_                   |
++------------------+-------------------------------------------------------------------+
+|                  | `<http://download.bareos.com/bareos/release/14.2/>`_                   |
++------------------+-------------------------------------------------------------------+
 
 First stable release of the Bareos 14.2 branch.
 
@@ -939,21 +1003,24 @@ First stable release of the Bareos 14.2 branch.
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release & 2014-09-22 \\
-   Database Version  & 2003\\
-                     & Database update required, see the :ref:`bareos-update` section.\\
-   Url               & `<http://download.bareos.org/bareos/release/14.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release & 2014-09-22 \\
+    Database Version  & 2003\\
+                      & Database update required, see the :ref:`bareos-update` section.\\
+    Url               & `<http://download.bareos.org/bareos/release/14.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================================================
-Code Release     2014-09-22
-Database Version 2003
-\                Database update required, see the :ref:`bareos-update` section.
-Url              `<http://download.bareos.org/bareos/release/14.2/>`_
-================ ===============================================================================
++------------------+---------------------------------------------------------------------------------+
+| Code Release     | 2014-09-22                                                                      |
++------------------+---------------------------------------------------------------------------------+
+| Database Version | 2003                                                                            |
++------------------+---------------------------------------------------------------------------------+
+|                  | Database update required, see the :ref:`bareos-update` section. |
++------------------+---------------------------------------------------------------------------------+
+| Url              | `<http://download.bareos.org/bareos/release/14.2/>`_                                 |
++------------------+---------------------------------------------------------------------------------+
 
 Beta release.
 
@@ -969,19 +1036,21 @@ bareos-13.2.5
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2015-12-03 \\
-   Database Version  & 2002 (unchanged)\\
-   Url               & `<http://download.bareos.com/bareos/release/13.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2015-12-03 \\
+    Database Version  & 2002 (unchanged)\\
+    Url               & `<http://download.bareos.com/bareos/release/13.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2015-12-03
-Database Version 2002 (unchanged)
-Url              `<http://download.bareos.com/bareos/release/13.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2015-12-03                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2002 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/13.2/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes.
 
@@ -994,19 +1063,21 @@ bareos-13.2.4
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2014-11-05 \\
-   Database Version  & 2002 (unchanged)\\
-   Url               & `<http://download.bareos.com/bareos/release/13.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2014-11-05 \\
+    Database Version  & 2002 (unchanged)\\
+    Url               & `<http://download.bareos.com/bareos/release/13.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2014-11-05
-Database Version 2002 (unchanged)
-Url              `<http://download.bareos.com/bareos/release/13.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2014-11-05                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2002 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/13.2/>`_ |
++------------------+-------------------------------------------------+
 
 bareos-13.2.3
 -------------
@@ -1017,21 +1088,24 @@ bareos-13.2.3
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2014-03-11 \\
-   Database Version  & 2002\\
-                     & Database update required, see the :ref:`bareos-update` section.\\
-   Url               & `<http://download.bareos.com/bareos/release/13.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2014-03-11 \\
+    Database Version  & 2002\\
+                      & Database update required, see the :ref:`bareos-update` section.\\
+    Url               & `<http://download.bareos.com/bareos/release/13.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================================================
-Code Release     2014-03-11
-Database Version 2002
-\                Database update required, see the :ref:`bareos-update` section.
-Url              `<http://download.bareos.com/bareos/release/13.2/>`_
-================ ===============================================================================
++------------------+---------------------------------------------------------------------------------+
+| Code Release     | 2014-03-11                                                                      |
++------------------+---------------------------------------------------------------------------------+
+| Database Version | 2002                                                                            |
++------------------+---------------------------------------------------------------------------------+
+|                  | Database update required, see the :ref:`bareos-update` section. |
++------------------+---------------------------------------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/13.2/>`_                                 |
++------------------+---------------------------------------------------------------------------------+
 
 It is known, that :command:`drop_database` scripts will not longer work on PostgreSQL < 8.4. However, as :command:`drop_database` scripts are very seldom needed, package dependencies do not yet enforce PostgreSQL >= 8.4. We plan to ensure this in future version of Bareos.
 
@@ -1044,21 +1118,24 @@ bareos-13.2.2
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2013-11-19 \\
-   Database Version  & 2001 (unchanged)\\
-   Url               & `<http://download.bareos.org/bareos/release/13.2/>`_ \\
-                     & `<http://download.bareos.com/bareos/release/13.2/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2013-11-19 \\
+    Database Version  & 2001 (unchanged)\\
+    Url               & `<http://download.bareos.org/bareos/release/13.2/>`_ \\
+                      & `<http://download.bareos.com/bareos/release/13.2/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2013-11-19
-Database Version 2001 (unchanged)
-Url              `<http://download.bareos.org/bareos/release/13.2/>`_
-\                `<http://download.bareos.com/bareos/release/13.2/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2013-11-19                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2001 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.org/bareos/release/13.2/>`_ |
++------------------+-------------------------------------------------+
+|                  | `<http://download.bareos.com/bareos/release/13.2/>`_ |
++------------------+-------------------------------------------------+
 
 Bareos-12.4
 ===========
@@ -1072,19 +1149,21 @@ bareos-12.4.8
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2015-11-18 \\
-   Database Version  & 2001 (unchanged)\\
-   Url               & `<http://download.bareos.com/bareos/release/12.4/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2015-11-18 \\
+    Database Version  & 2001 (unchanged)\\
+    Url               & `<http://download.bareos.com/bareos/release/12.4/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2015-11-18
-Database Version 2001 (unchanged)
-Url              `<http://download.bareos.com/bareos/release/12.4/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2015-11-18                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2001 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/12.4/>`_ |
++------------------+-------------------------------------------------+
 
 This release contains several bugfixes.
 
@@ -1097,21 +1176,24 @@ bareos-12.4.6
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2013-11-19 \\
-   Database Version  & 2001 (unchanged)\\
-   Url               & `<http://download.bareos.org/bareos/release/12.4/>`_ \\
-                     & `<http://download.bareos.com/bareos/release/12.4/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2013-11-19 \\
+    Database Version  & 2001 (unchanged)\\
+    Url               & `<http://download.bareos.org/bareos/release/12.4/>`_ \\
+                      & `<http://download.bareos.com/bareos/release/12.4/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2013-11-19
-Database Version 2001 (unchanged)
-Url              `<http://download.bareos.org/bareos/release/12.4/>`_
-\                `<http://download.bareos.com/bareos/release/12.4/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2013-11-19                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2001 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.org/bareos/release/12.4/>`_ |
++------------------+-------------------------------------------------+
+|                  | `<http://download.bareos.com/bareos/release/12.4/>`_ |
++------------------+-------------------------------------------------+
 
 bareos-12.4.5
 -------------
@@ -1122,19 +1204,21 @@ bareos-12.4.5
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2013-09-10 \\
-   Database Version  & 2001 (unchanged)\\
-   Url               & `<http://download.bareos.com/bareos/release/12.4/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2013-09-10 \\
+    Database Version  & 2001 (unchanged)\\
+    Url               & `<http://download.bareos.com/bareos/release/12.4/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2013-09-10
-Database Version 2001 (unchanged)
-Url              `<http://download.bareos.com/bareos/release/12.4/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2013-09-10                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2001 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.com/bareos/release/12.4/>`_ |
++------------------+-------------------------------------------------+
 
 bareos-12.4.4
 -------------
@@ -1145,21 +1229,24 @@ bareos-12.4.4
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2013-06-17 \\
-   Database Version  & 2001 (unchanged)\\
-   Url               & `<http://download.bareos.org/bareos/release/12.4/>`_ \\
-                     & `<http://download.bareos.com/bareos/release/12.4/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2013-06-17 \\
+    Database Version  & 2001 (unchanged)\\
+    Url               & `<http://download.bareos.org/bareos/release/12.4/>`_ \\
+                      & `<http://download.bareos.com/bareos/release/12.4/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2013-06-17
-Database Version 2001 (unchanged)
-Url              `<http://download.bareos.org/bareos/release/12.4/>`_
-\                `<http://download.bareos.com/bareos/release/12.4/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2013-06-17                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2001 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.org/bareos/release/12.4/>`_ |
++------------------+-------------------------------------------------+
+|                  | `<http://download.bareos.com/bareos/release/12.4/>`_ |
++------------------+-------------------------------------------------+
 
 bareos-12.4.3
 -------------
@@ -1170,21 +1257,24 @@ bareos-12.4.3
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2013-04-15 \\
-   Database Version  & 2001 (unchanged)\\
-   Url               & `<http://download.bareos.org/bareos/release/12.4/>`_ \\
-                     & `<http://download.bareos.com/bareos/release/12.4/>`_ \\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2013-04-15 \\
+    Database Version  & 2001 (unchanged)\\
+    Url               & `<http://download.bareos.org/bareos/release/12.4/>`_ \\
+                      & `<http://download.bareos.com/bareos/release/12.4/>`_ \\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ===============================================
-Code Release     2013-04-15
-Database Version 2001 (unchanged)
-Url              `<http://download.bareos.org/bareos/release/12.4/>`_
-\                `<http://download.bareos.com/bareos/release/12.4/>`_
-================ ===============================================
++------------------+-------------------------------------------------+
+| Code Release     | 2013-04-15                                      |
++------------------+-------------------------------------------------+
+| Database Version | 2001 (unchanged)                                |
++------------------+-------------------------------------------------+
+| Url              | `<http://download.bareos.org/bareos/release/12.4/>`_ |
++------------------+-------------------------------------------------+
+|                  | `<http://download.bareos.com/bareos/release/12.4/>`_ |
++------------------+-------------------------------------------------+
 
 bareos-12.4.2
 -------------
@@ -1195,17 +1285,18 @@ bareos-12.4.2
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2013-03-03 \\
-   Database Version  & 2001 (unchanged)\\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2013-03-03 \\
+    Database Version  & 2001 (unchanged)\\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ================
-Code Release     2013-03-03
-Database Version 2001 (unchanged)
-================ ================
++------------------+------------------+
+| Code Release     | 2013-03-03       |
++------------------+------------------+
+| Database Version | 2001 (unchanged) |
++------------------+------------------+
 
 bareos-12.4.1
 -------------
@@ -1216,17 +1307,18 @@ bareos-12.4.1
 
 ::
 
-   \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
-   Code Release      & 2013-02-06 \\
-   Database Version  & 2001 (initial)\\
-   \end{tabular}
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+    Code Release      & 2013-02-06 \\
+    Database Version  & 2001 (initial)\\
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-================ ==============
-Code Release     2013-02-06
-Database Version 2001 (initial)
-================ ==============
++------------------+----------------+
+| Code Release     | 2013-02-06     |
++------------------+----------------+
+| Database Version | 2001 (initial) |
++------------------+----------------+
 
 This have been the initial release of Bareos.
 

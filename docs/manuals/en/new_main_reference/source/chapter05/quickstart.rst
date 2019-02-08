@@ -62,10 +62,10 @@ As the |bareosDir| and |bareosSd| runs as user **bareos**, testing the configura
 This is especially required to test the |bareosDir|, as it also connects to the database and checks if the catalog schema version is correct. Depending on your database, only the **bareos** has permission to access it.
 
 .. code-block:: sh
-   :caption: Testing Configuration Files
+    :caption: Testing Configuration Files
 
-   su bareos -s /bin/sh -c "/usr/sbin/bareos-dir -t"
-   su bareos -s /bin/sh -c "/usr/sbin/bareos-sd -t"
-   bareos-fd -t
-   bconsole -t
-   bareos-tray-monitor -t
+    su bareos -s /bin/sh -c "/usr/sbin/bareos-dir -t"
+    su bareos -s /bin/sh -c "/usr/sbin/bareos-sd -t"
+    bareos-fd -t
+    bconsole -t
+    bareos-tray-monitor -t

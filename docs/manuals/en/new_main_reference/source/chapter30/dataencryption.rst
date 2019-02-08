@@ -52,18 +52,18 @@ End-user configuration settings for the algorithms are not currently exposed, on
 
 ::
 
-   Symmetric Encryption:
-       - 128, 192, and 256-bit AES-CBC
-       - Blowfish-CBC
+    Symmetric Encryption:
+        - 128, 192, and 256-bit AES-CBC
+        - Blowfish-CBC
 
-   Asymmetric Encryption (used to encrypt symmetric session keys):
-       - RSA
+    Asymmetric Encryption (used to encrypt symmetric session keys):
+        - RSA
 
-   Digest Algorithms:
-       - MD5
-       - SHA1
-       - SHA256
-       - SHA512
+    Digest Algorithms:
+        - MD5
+        - SHA1
+        - SHA256
+        - SHA512
 
 The various algorithms are exposed via an entirely re-usable, OpenSSL-agnostic API (ie, it is possible to drop in a new encryption backend). The Volume format is DER-encoded ASN.1, modeled after the Cryptographic Message Syntax from RFC 3852. Unfortunately, using CMS directly was not possible, as at the time of coding a free software streaming DER decoder/encoder was not available.
 
@@ -78,8 +78,8 @@ Generate a Master Key Pair with:
 
 ::
 
-     openssl genrsa -out master.key 2048
-     openssl req -new -key master.key -x509 -out master.cert
+      openssl genrsa -out master.key 2048
+      openssl req -new -key master.key -x509 -out master.cert
 
 
 
@@ -89,9 +89,9 @@ Generate a File Daemon Key Pair for each FD:
 
 ::
 
-     openssl genrsa -out fd-example.key 2048
-     openssl req -new -key fd-example.key -x509 -out fd-example.cert
-     cat fd-example.key fd-example.cert >fd-example.pem
+      openssl genrsa -out fd-example.key 2048
+      openssl req -new -key fd-example.key -x509 -out fd-example.cert
+      cat fd-example.key fd-example.cert >fd-example.pem
 
 
 
@@ -121,13 +121,14 @@ You must:
 
    ::
 
-      cat master.key master.cert > master.keypair
+       cat master.key master.cert > master.keypair
+           
 
 -  Set the PKI Keypair statement in your bareos configuration file:
 
    ::
 
-         PKI Keypair = master.keypair
+          PKI Keypair = master.keypair
 
 -  Start the restore. The master keypair will be used to decrypt the file data.
 

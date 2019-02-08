@@ -61,7 +61,7 @@ What is Implemented
 
    -  Any number of Jobs and Clients can be backed up to a single Volume. That is, you can backup and restore Linux, Unix and Windows machines to the same Volume.
 
-   -  Multi-volume saves. When a Volume is full, Bareos automatically requests the next Volume and continues the backup.
+   -  Multi-volume saves. When a Volume is full, **Bareos** automatically requests the next Volume and continues the backup.
 
    -  :ref:`Pool and Volume <DirectorResourcePool>` library management providing Volume flexibility (e.g. monthly, weekly, daily Volume sets, Volume sets segregated by Client, ...).
 
@@ -156,7 +156,7 @@ Design Limitations or Restrictions
 
 -  Names (resource names, volume names, and such) defined in Bareos configuration files are limited to a fixed number of characters. Currently the limit is defined as 127 characters. Note, this does not apply to filenames, which may be arbitrarily long.
 
--  Command line input to some of the stand alone tools – e.g. :command:`btape`, :command:`bconsole` is restricted to several hundred characters maximum. Normally, this is not a restriction, except in the case of listing multiple Volume names for programs such as :command:`bscan`. To avoid this command line length restriction, please use a .bsr file to specify the Volume names.
+-  Command line input to some of the stand alone tools – e.g. :command:`btape`, :command:`bconsole` is restricted to several hundred characters maximum. Normally, this is not a restriction, except in the case of listing multiple Volume names for programs such as :command:`bscan`. To avoid this command line length restriction, please use a **.bsr** file to specify the Volume names.
 
 -  Bareos configuration files for each of the components can be any length. However, the length of an individual line is limited to 500 characters after which it is truncated. If you need lines longer than 500 characters for directives such as ACLs where they permit a list of names are character strings simply specify multiple short lines repeating the directive on each line but with different list values.
 

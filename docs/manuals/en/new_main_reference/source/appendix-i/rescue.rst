@@ -71,7 +71,7 @@ Linux
 
 From the Relax-and-Recover web site (`http://relax-and-recover.org <http://relax-and-recover.org>`_):
 
-   Relax-and-Recover is a setup-and-forget Linux bare metal disaster recovery solution. It is easy to set up and requires no maintenance so there is no excuse for not using it.
+    Relax-and-Recover is a setup-and-forget Linux bare metal disaster recovery solution. It is easy to set up and requires no maintenance so there is no excuse for not using it.
 
 Relax-and-Recover (ReaR) is quite easy to use with Bareos.
 
@@ -88,25 +88,25 @@ Assuming you have a working Bareos configuration on the system you want to prote
 
 .. code-block:: sh
 
-   BACKUP=BAREOS
-   BAREOS_CLIENT=bareosclient-fd
+    BACKUP=BAREOS
+    BAREOS_CLIENT=bareosclient-fd
 
 You also need to specify in your ReaR configuration file (:file:`/etc/rear/local.conf`) where you want to store your recovery images. Please refer to the `ReaR documentation <http://relax-and-recover.org/documentation/>`_ for details.
 
 For example, if you want to create an ISO image and store it to an NFS server with the IP Address 192.168.10.1, you can use the following configuration:
 
 .. code-block:: sh
-   :caption: Full Rear configuration in /etc/rear/local.conf
+    :caption: Full Rear configuration in /etc/rear/local.conf
 
-   # This is default:
-   #OUTPUT=ISO
-   # Where to write the iso image
-   # You can use NFS, if you want to write your iso image to a nfs server
-   # If you leave this blank, it will
-   # be written to: /var/lib/rear/output/
-   OUTPUT_URL=nfs://192.168.10.1/rear
-   BACKUP=BAREOS
-   BAREOS_CLIENT=bareosclient-fd
+    # This is default:
+    #OUTPUT=ISO
+    # Where to write the iso image
+    # You can use NFS, if you want to write your iso image to a nfs server
+    # If you leave this blank, it will
+    # be written to: /var/lib/rear/output/
+    OUTPUT_URL=nfs://192.168.10.1/rear
+    BACKUP=BAREOS
+    BAREOS_CLIENT=bareosclient-fd
 
 Backup
 ^^^^^^
@@ -114,9 +114,9 @@ Backup
 If you have installed and configured ReaR on your system, type
 
 .. code-block:: sh
-   :caption: Create Rescue Image
+    :caption: Create Rescue Image
 
-   <command>rear</command><parameter> -v mkrescue</parameter>
+    <command>rear</command><parameter> -v mkrescue</parameter>
 
 to create the rescue image. If you used the configuration example above, you will get a bootable ISO image which can be burned onto a CD.
 
@@ -135,9 +135,9 @@ Recovery
 In case, you want to recover your system, boot it using the generated ReaR recovery ISO. After booting log in as user **root** and type
 
 .. code-block:: sh
-   :caption: Restore your system using Rear and Bareos
+    :caption: Restore your system using Rear and Bareos
 
-   <command>rear</command><parameter> recover</parameter>
+    <command>rear</command><parameter> recover</parameter>
 
 ReaR will now use the most recent backup from Bareos to restore your system. When the restore job has finished, ReaR will start a new shell which you can use to verify if the system has been restored correctly. The restored system can be found under the :file:`/mnt/local` directory. When you are done< with the verification, type ’exit’ to leave the shell, getting back to the recovery process. Finally, you will be asked to confirm that everything is correct. Type ’yes’ to continue. After that,
 ReaR will restore your bootloader. Recovery is complete.
@@ -175,17 +175,17 @@ The second suggestion is probably a much simpler solution, and one I have done m
 
 -  Ideally, you will have a copy of all the Bareos conf files that were being used on your server. If not, you will at a minimum need create a bareos-dir.conf that has the same Client resource that was used to backup your system.
 
--  If you have a valid saved Bootstrap file as created for your damaged machine with WriteBootstrap, use it to restore the files to the damaged machine, where you have loaded a static Bareos File daemon using the Rescue disk). This is done by using the restore command and at the yes/mod/no prompt, selecting mod then specifying the path to the bootstrap file.
+-  If you have a valid saved Bootstrap file as created for your damaged machine with WriteBootstrap, use it to restore the files to the damaged machine, where you have loaded a static Bareos File daemon using the Rescue disk). This is done by using the restore command and at the yes/mod/no prompt, selecting **mod** then specifying the path to the bootstrap file.
 
 -  If you have the Bootstrap file, you should now be back up and running, if you do not have a Bootstrap file, continue with the suggestions below.
 
--  Using bscan scan the last set of backup tapes into your MySQL, PostgreSQL or SQLite database.
+-  Using **bscan** scan the last set of backup tapes into your MySQL, PostgreSQL or SQLite database.
 
--  Start Bareos, and using the Console restore command, restore the last valid copy of the Bareos database and the Bareos configuration files.
+-  Start Bareos, and using the Console **restore** command, restore the last valid copy of the Bareos database and the Bareos configuration files.
 
 -  Move the database to the correct location.
 
--  Start the database, and restart Bareos. Then use the Console restore command, restore all the files on the damaged machine, where you have loaded a Bareos File daemon using the Rescue disk.
+-  Start the database, and restart Bareos. Then use the Console **restore** command, restore all the files on the damaged machine, where you have loaded a Bareos File daemon using the Rescue disk.
 
 For additional details of restoring your database, please see the :ref:`section-RestoreCatalog` chapter.
 

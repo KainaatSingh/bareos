@@ -52,31 +52,34 @@ These combinations of Bareos and Bacula are know to work together:
 
 ::
 
-   \begin{tabular}[h]{|l|l|l|l|}
-     \hline
-     :strong:`Director` & :strong:`Storage Daemon` & :strong:`File Daemon` & :strong:`Remarks` \\
-     \hline
-     \hline
-     \bareoscolor & \bareoscolor & \bareoscolor & \\
-     \hline
-     \bareoscolor & \bareoscolor & 2.0 <= \baculacolor < 6.0 & \\
-     \hline
-     \baculacolor & \baculacolor & \baculacolor & \\
-     \hline
-     \baculacolor & \baculacolor & \bareoscolor (compatibility mode) & \\
-     \hline
-   \end{tabular}
+    \begin{tabular}[h]{|l|l|l|l|}
+      \hline
+      :strong:`Director` & :strong:`Storage Daemon` & :strong:`File Daemon` & :strong:`Remarks` \\
+      \hline
+      \hline
+      \bareoscolor & \bareoscolor & \bareoscolor & \\
+      \hline
+      \bareoscolor & \bareoscolor & 2.0 <= \baculacolor < 6.0 & \\
+      \hline
+      \baculacolor & \baculacolor & \baculacolor & \\
+      \hline
+      \baculacolor & \baculacolor & \bareoscolor (compatibility mode) & \\
+      \hline
+    \end{tabular}
 
 # Tabular converted from LaTeX to RST (or empty, in case of problems):
 
-============ ================== =========================== ===========
-**Director** **Storage Daemon** **File Daemon**             **Remarks**
-============ ================== =========================== ===========
-Bareos       Bareos             Bareos                     
-Bareos       Bareos             2.0 <= Bacula < 6.0        
-Bacula       Bacula             Bacula                     
-Bacula       Bacula             Bareos (compatibility mode)
-============ ================== =========================== ===========
++--------------+--------------------+-----------------------------+-------------+
+| **Director** | **Storage Daemon** | **File Daemon**             | **Remarks** |
++==============+====================+=============================+=============+
+| Bareos       | Bareos             | Bareos                      |             |
++--------------+--------------------+-----------------------------+-------------+
+| Bareos       | Bareos             | 2.0 <= Bacula < 6.0         |             |
++--------------+--------------------+-----------------------------+-------------+
+| Bacula       | Bacula             | Bacula                      |             |
++--------------+--------------------+-----------------------------+-------------+
+| Bacula       | Bacula             | Bareos (compatibility mode) |             |
++--------------+--------------------+-----------------------------+-------------+
 
 Other combinations like Bacula Director with |bareosSd| will not work. However this wasn’t even possible with different versions of bacula-dir and bacula-sd.
 
@@ -112,8 +115,8 @@ The required commands should look something like this:
 
 .. code-block:: sh
 
-   usermod  -l bareos bacula
-   groupmod -n bareos bacula
+    usermod  -l bareos bacula
+    groupmod -n bareos bacula
 
 MySQL
 ^^^^^
@@ -126,7 +129,7 @@ Proceed with the following steps:
 
    .. code-block:: sh
 
-      mysqldump bacula > /tmp/bacula_5.2.sql
+       mysqldump bacula > /tmp/bacula_5.2.sql
 
 -  Make the user bareos have the same userid and the group bareos the same groupid as the user/group bacula had before. This will solve a lot of rights problems.
 
@@ -136,33 +139,33 @@ Proceed with the following steps:
 
    .. code-block:: sh
 
-      export db_name=bacula
-      /usr/lib/bareos/update_bareos_tables
-      unset db_name
+       export db_name=bacula
+       /usr/lib/bareos/update_bareos_tables
+       unset db_name
 
 -  Backup upgraded DB:
 
    .. code-block:: sh
 
-      mysqldump bacula > /tmp/bacula.sql
+       mysqldump bacula > /tmp/bacula.sql
 
 -  Create bareos database:
 
    .. code-block:: sh
 
-      /usr/lib/bareos/create_bareos_database
+       /usr/lib/bareos/create_bareos_database
 
 -  Insert backuped db into new database:
 
    .. code-block:: sh
 
-      cat /tmp/bacula.sql | mysql bareos
+       cat /tmp/bacula.sql | mysql bareos
 
 -  Grant permissions:
 
    .. code-block:: sh
 
-      /usr/lib/bareos/grant_mysql_privileges
+       /usr/lib/bareos/grant_mysql_privileges
 
 -  Adapt file permissions to bareos, if you have any file storage
 
@@ -181,6 +184,6 @@ Renaming a postgresql database:
 
    .. code-block:: sh
 
-      ALTER DATABASE bacula RENAME TO bareos;
-      ALTER USER bacula RENAME TO bareos;
-      ALTER USER bareos UNENCRYPTED PASSWORD 'password';
+       ALTER DATABASE bacula RENAME TO bareos;
+       ALTER USER bacula RENAME TO bareos;
+       ALTER USER bareos UNENCRYPTED PASSWORD 'password';
