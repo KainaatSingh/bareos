@@ -5,11 +5,7 @@
 from   __future__ import print_function
 import argparse
 import logging
-#import fileinput
 from   pandocfilters import toJSONFilter, Code, Str, Para, Plain
-#from pyparsing import Word, alphas, alphanums, Literal, restOfLine, OneOrMore, \
-#    empty, Suppress, replaceWith, nestedExpr
-from   pyparsing import *
 import re
 import sys
 
@@ -856,7 +852,7 @@ class Translate(object):
         #    #item.replace(b':index:`{0}: {1}. <triple: Limitation; {0}; {1}>`\n{2}\n'.format(component, summary, text))
         #    item.replace(b':index:`{0}: {1}. <triple: Limitation; {0}; {1}>`\n\n.. limitation:: **{1}.**\n{2}\n\n'.format(component, summary, text))
         #else:
-        item.replace(b'.. limitation:: Limitation {component}: {summary}.\n\n{indent}.. index::\n{indent}   triple: Limitation; {component}; {summary}\n\n{text}\n\n'.format(indent=indenttext, component=component, summary=summary, text=text))
+        item.replace(b'.. limitation:: {component}: {summary}.\n\n{indent}.. index::\n{indent}   triple: Limitation; {component}; {summary}\n\n{text}\n\n'.format(indent=indenttext, component=component, summary=summary, text=text))
 
 
 
