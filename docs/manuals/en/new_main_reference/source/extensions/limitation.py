@@ -32,13 +32,17 @@ class Limitation(Directive):
         
 
         tgtid = 'index-%s' % env.new_serialno('index')
-        indexnode = addnodes.index('single', title , tgtid , '')
+        indexnode = addnodes.index()
+        indexnode['entries'] = [ 
+                ('single', title , tgtid , '')
+                ]
+
         
-        result = indexnode
         result = nodes.section(ids=['limitation'])
         result += nodes.title(text=title)
         #result += nodes.paragraph(text=text)
         result += paragraph
+        result += indexnode
 
         return [result]
 
