@@ -34,7 +34,7 @@ class Limitation(Directive):
         tgtid = 'index-%s' % env.new_serialno('index')
         indexnode = addnodes.index()
         indexnode['entries'] = [ 
-                ('single', title , tgtid , '')
+                ('single', 'Limitation; ' + self.arguments[0] , tgtid , '', None)
                 ]
 
         
